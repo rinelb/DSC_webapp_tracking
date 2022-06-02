@@ -79,7 +79,8 @@ var timeDisplay = document.getElementById("time");
 latv.innerHTML = "waiting for coordinates"; 
 // Create a client instance
 // client = new Paho.MQTT.Client("broker.hivemq.com", Number(8000), "clientIdWebAppTest");
-client = new Paho.MQTT.Client("146.64.8.98", Number(61614), "clientIdWebAppTest");
+var clientIdWebApp = "clientIdWebAppTest"+ Math.floor(Math.random() * 10000);  
+client = new Paho.MQTT.Client("146.64.8.98", Number(61614), clientIdWebApp);
 
  
 // set callback handlers
@@ -182,12 +183,25 @@ function onMessageArrived(message) {
 			    console.log( object.metric[1].name +": "+object.metric[1].floatValue);
 			    console.log( object.metric[2].name +": "+object.metric[2].floatValue);
 // 			    console.log( object.metric[3].name +": "+object.metric[1].doubleValue);
-			    firstpolyline.addLatLng([object.metric[2].floatValue, object.metric[1].floatValue]);
+				var latValue;
+				var longValue;
+				var metric_size = object.metric.length;
+				console.log( "metric_size = " + metric_size );
+				
+				for (var i =0 ; i<metric_size;i++){
+					if (object.metric[i].name.includes("lat") ){
+						latValue = object.metric[i].floatValue;
+					}
+				if (object.metric[i].name.includes("long") ){
+						longValue = object.metric[i].floatValue;
+					}
+				}
+			    firstpolyline.addLatLng([latValue, longValue]);
 
-			    var newLatLng = new L.LatLng(object.metric[2].floatValue, object.metric[1].floatValue);
+			    var newLatLng = new L.LatLng(latValue, longValue);
 			    marker.setLatLng(newLatLng); 
-			    latv.innerHTML = "Lat = "+ object.metric[2].floatValue + "";
-			    longv.innerHTML = "Long = "+ object.metric[1].floatValue + "";
+			    latv.innerHTML = "Lat = "+ latValue + "";
+			    longv.innerHTML = "Long = "+ longValue + "";
 
 			    
 
