@@ -26,7 +26,10 @@
 <div></div>Device <input id="inputTopic" value="ems-00002"></input>  <button onclick="start_topic()">Start</button><br></div>
 <p id="lat"></p>
 <p id="long">
-<p id="time"></p></p></center>
+<p id="time"></p></p>
+<input type="checkbox" id="checkBoxFoll" checked="false">
+<label for="checkBoxFoll">Center the marker on the map</label></center>
+
 <div id="map"></div>
 </body>
 
@@ -200,6 +203,9 @@ function onMessageArrived(message) {
 
 			    var newLatLng = new L.LatLng(latValue, longValue);
 			    marker.setLatLng(newLatLng); 
+			    if (document.getElementById("checkBoxFoll").checked == true){
+			    	map.setView([latValue,longValue],18)
+			    }
 			    latv.innerHTML = "Lat = "+ latValue + "";
 			    longv.innerHTML = "Long = "+ longValue + "";
 
