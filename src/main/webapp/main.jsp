@@ -22,7 +22,8 @@
    crossorigin=""></script>
 <body>
 <center>
-<h1>Internal CSIR Bracelet Location Tester</h1>
+<h1  ><img src ="img/ezgif.com-gif-maker.png" width="59" 
+     height="29" /> - Geo Tracker</h1>
 <div></div>Device <input id="inputTopic" value="ems-00002"></input>  <button onclick="start_topic()">Start</button><br></div>
 <p id="lat"></p>
 <p id="long">

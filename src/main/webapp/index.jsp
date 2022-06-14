@@ -1,6 +1,3 @@
 <html>
-<body>
-<h2>Hello World!</h2>
-<main></main>
-</body>
+<meta http-equiv="Refresh" content="0; url='main.jsp'" />
 </html>

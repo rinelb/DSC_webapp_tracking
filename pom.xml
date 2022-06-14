@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>Map</groupId>
-  <artifactId>MapTracker</artifactId>
+  <artifactId>CSIRGeoTracker</artifactId>
   <version>1.0.0</version>
   <packaging>war</packaging>
 
-  <name>MapTracker Maven Webapp</name>
+  <name>CSIRGeoTracker Maven Webapp</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
