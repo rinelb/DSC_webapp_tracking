@@ -22,8 +22,8 @@
    crossorigin=""></script>
 <body>
 <center>
-<h1  ><img src ="img/ezgif.com-gif-maker.png" width="59" 
-     height="29" /> - Geo Tracker</h1>
+<h1  style="display: flex;text-align: top;align-items: center;justify-content: center;" ><img src ="img/ezgif.com-gif-maker.png" width="105" height="50"/>&nbsp; &nbsp; 
+<img src ="img/cropped-newnew.png" width="150" height="60" /><span style="font-size:50px;">&nbsp;- Geo Tracker</span></span></h1><br>
 <div></div>Device <input id="inputTopic" value="ems-00002"></input>  <button onclick="start_topic()">Start</button><br></div>
 <p id="lat"></p>
 <p id="long">
@@ -183,10 +183,8 @@ function onMessageArrived(message) {
 			    var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
 			    d.setUTCSeconds((object.timestamp)/1000);
 			    timeDisplay.innerHTML = "Time = "+ d;
-// 			    console.log( object.metric[0].name +": "+object.metric[0].doubleValue);
 			    console.log( object.metric[1].name +": "+object.metric[1].floatValue);
 			    console.log( object.metric[2].name +": "+object.metric[2].floatValue);
-// 			    console.log( object.metric[3].name +": "+object.metric[1].doubleValue);
 				var latValue;
 				var longValue;
 				var metric_size = object.metric.length;
@@ -212,48 +210,6 @@ function onMessageArrived(message) {
 
 			    
 
-
-				/* Working code
-			    var newLatLng = new L.LatLng(object.metric[0].doubleValue, object.metric[1].doubleValue);
-			    marker.setLatLng(newLatLng); 
-			    latv.innerHTML = "lat = "+ object.metric[0].doubleValue + "";
-			    longv.innerHTML = "long = "+ object.metric[1].doubleValue + "";
-
-			   /*
-			   
-
-
-			    //data_object = {time:object.timestamp,temp:object.metric[0].doubleValue,ph:object.metric[1].doubleValue}
-			    //plot_data.shift();  //to remove first element in the error
-			    //plot_data.push(data_object)
-			    
-			    
-				//d3.select("#chart").datum(plot_data).call(chart);
-			    //d3.select("#chart").datum(plot_data).call(chart);
-			  //  d3.select(window).on('resize', resize);
-			    //     {x: 3, y: 70}, {x: 4, y: 40}, {x: 5, y: 80} ];
-			  var d = new Date(parseInt(object.timestamp));
-			  var time_add =   d.getFullYear()+ d.getMonth+"-"+d.getDate()+ "-"+d.getMinutes()+ "-"+d.getSeconds()+"-"+d.getMilliseconds();
-			  
-			  var time_add =   d.getHours()+":"+ d.getMinutes()+":"+d.getSeconds()+ "  "+d.getDate()+ "-"+d.getMonth()+"-"+d.getFullYear();
-	  
-			  /*
-			  console.log(" mqtt value :");
-			  console.log(" solar value :" +object.metric[0].floatValue+" "+ object.metric[1].floatValue);
-			  console.log(" battery value :"+object.metric[2].floatValue+" "+ object.metric[3].floatValue);
-			  console.log(" dc1 value :"+object.metric[4].floatValue+" "+ object.metric[5].floatValue);
-			  console.log(" dc2 value :"+object.metric[6].floatValue+" "+ object.metric[7].floatValue);
-			  console.log(" mppt value :"+object.metric[8].floatValue);*/
-			  /*
-			  solar voltage :undefined
-			  main.jsp:832  solar current :14.529999732971191
-			  main.jsp:833  battery voltage :0
-			  main.jsp:834  battery current :12.90999984741211
-			  main.jsp:835  dc1 voltage :0.20000000298023224
-			  main.jsp:836  dc1 current :0
-			  main.jsp:837  dc2 value :0
-			  main.jsp:838  dc2 value :0
-			  main.jsp:839  mppt value :0*/
 	  
 	  
   			});
