@@ -24,18 +24,17 @@
 <center>
 <h1  style="display: flex;text-align: top;align-items: center;justify-content: center;" ><img src ="img/ezgif.com-gif-maker.png" width="105" height="50"/>&nbsp; &nbsp; 
 <img src ="img/cropped-newnew.png" width="150" height="60" /><span style="font-size:50px;">&nbsp;- Geo Tracker</span></h1><br>
-<div>
-      <input type="radio" id="option1" name="options" value="option1" checked>
+<div style="display:none">
+      <input type="radio" id="option1" name="options" value="option1" >
       <label for="option1">track one bracelet</label>
     
-      <input type="radio" id="option2" name="options" value="option2">
+      <input type="radio" id="option2" name="options" value="option2" checked>
       <label for="option2">track munitply bracelets</label>
     </div>
-    
-    
-<div> Device <input id="inputTopic" value="ems-00002"></input>  <button onclick="start_topic()">Start</button><br></div>
-<button  onclick="start_topic()">Bracelets</button><br></div>
-<div id="bracelet_list">
+    <button id="hideGui" onclick="Hide()">Hide devices</button>
+ <div id="bracelet_list">   
+<div style="display:none"> Device <input id="inputTopic" value="ems-00002"></input>  <br></div> 
+
 		<select id = "bracelet1" onchange = "favTutorial()" >  
 		</select>  <input type="checkbox" id="checkbox1" ><br>
 		<select id = "bracelet2" onchange = "favTutorial()" >  
@@ -57,9 +56,9 @@
 		<select id = "bracelet10" onchange = "favTutorial()" >  
 		</select>  <input type="checkbox" id="checkbox10" ><br>
 		
-
-<button id="start_tracking" onclick="start_tracking()">Start Tracking</button>
 </div>
+
+<button onclick="start_topic()">Start</button>
 
 
 
@@ -67,9 +66,10 @@
 <p id="long">
 <p id="time"></p></p>
 <input type="checkbox" id="checkBoxFoll" checked="false">
-<label for="checkBoxFoll">Center the marker on the map</label></center>
-
+<label for="checkBoxFoll">Center the marker on the map to : </label> <select id = "trackdevice" onchange = "favTutorial()" >  </select> </center><br>
+<center><div id="keyofmarker"></div></center>
 <div id="map"></div>
+
 </body>
 
 <script>  
@@ -86,6 +86,20 @@ for (let i = 1; i < 11; i++) {
     checkbox.addEventListener("change", function() {
       console.log("Checkbox " + i + " is now " + checkbox.checked);
     });
+  }
+</script> 
+
+
+
+<script>  
+function Hide() {  
+	if (document.getElementById("hideGui").innerHTML === "show devices"){
+		document.getElementById("hideGui").innerHTML = "hide devices"
+		document.getElementById("bracelet_list").style.display = "block";
+	}else{
+		document.getElementById("hideGui").innerHTML = "show devices";
+		document.getElementById("bracelet_list").style.display = "none";
+	}
   }
 </script> 
 
@@ -213,25 +227,130 @@ count10 = 9;
 
 
 <script>
-
+var icon_list_url = ["https://cdn.jsdelivr.net/gh/pointhi/leaflet-color-markers@master/img/marker-icon-red.png",
+	"https://cdn.jsdelivr.net/gh/pointhi/leaflet-color-markers@master/img/marker-icon-blue.png",
+	"https://cdn.jsdelivr.net/gh/pointhi/leaflet-color-markers@master/img/marker-icon-green.png",
+	"https://cdn.jsdelivr.net/gh/pointhi/leaflet-color-markers@master/img/marker-icon-orange.png",
+	"https://cdn.jsdelivr.net/gh/pointhi/leaflet-color-markers@master/img/marker-icon-violet.png",
+	"https://cdn.jsdelivr.net/gh/pointhi/leaflet-color-markers@master/img/marker-icon-black.png",
+	"https://cdn.jsdelivr.net/gh/pointhi/leaflet-color-markers@master/img/marker-icon-gold.png",
+	"https://cdn.jsdelivr.net/gh/pointhi/leaflet-color-markers@master/img/marker-icon-grey.png",
+	"https://cdn.jsdelivr.net/gh/pointhi/leaflet-color-markers@master/img/marker-icon-orange.png",
+	"https://cdn.jsdelivr.net/gh/pointhi/leaflet-color-markers@master/img/marker-icon-green.png"];
+	
 var all_devices = [];
 var all_topice = [];
 var topic_subscribe_index = [];
 var topic_subscribe_bracelet = [];
 
+var follow_device = [];
+
 var map = L.map('map').setView([-25.7568505, +28.2783488], 18);
 var marker = new L.marker([-90000,-90000]).addTo(map);
 
-var marker1 = new L.marker([-90000,-90000]).addTo(map);
-var marker2 = new L.marker([-90000,-90000]).addTo(map);
-var marker3 = new L.marker([-90000,-90000]).addTo(map);
-var marker4 = new L.marker([-90000,-90000]).addTo(map);
-var marker5 = new L.marker([-90000,-90000]).addTo(map);
-var marker6 = new L.marker([-90000,-90000]).addTo(map);
-var marker7 = new L.marker([-90000,-90000]).addTo(map);
-var marker8 = new L.marker([-90000,-90000]).addTo(map);
-var marker9 = new L.marker([-90000,-90000]).addTo(map);
-var marker10 = new L.marker([-90000,-90000]).addTo(map);
+
+var icon1 = L.icon({
+	  iconUrl: 'https://cdn.jsdelivr.net/gh/pointhi/leaflet-color-markers@master/img/marker-icon-red.png',
+	  iconSize:  [19, 45],
+	  iconAnchor: [8, 45],
+	  popupAnchor: [-3, 0]
+	});
+var marker1 = new L.marker([-90000,-90000], {
+	  icon:icon1}).addTo(map);
+var icon2 = L.icon({
+	  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
+	  iconSize:  [19, 45],
+	  iconAnchor: [8, 45],
+	  popupAnchor: [-3, 0]
+	});
+var marker2 = new L.marker([-90000,-90000], {
+	  icon:icon2}).addTo(map);
+	  
+	  
+var icon3 = L.icon({
+    iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png',
+    iconSize:  [19, 45],
+	  iconAnchor: [8, 45],
+	  popupAnchor: [-3, 0]
+});	  
+var marker3 = new L.marker([-90000,-90000], {
+	icon:icon3}).addTo(map);
+
+	
+	
+	
+var icon4 = L.icon({
+    iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-violet.png',
+    iconSize:  [19, 45],
+	  iconAnchor: [8, 45],
+	  popupAnchor: [-3, 0]
+});	  
+var marker4 = new L.marker([-90000,-90000], {
+	icon:icon4}).addTo(map);
+	
+	
+	
+var icon5 = L.icon({
+    iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-black.png',
+    iconSize:  [19, 45],
+	  iconAnchor: [8, 45],
+	  popupAnchor: [-3, 0]
+});	  
+var marker5 = new L.marker([-90000,-90000], {
+	icon:icon5}).addTo(map);
+	
+	
+var icon6 = L.icon({
+    iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-gold.png',
+    iconSize:  [19, 45],
+	  iconAnchor: [8, 45],
+	  popupAnchor: [-3, 0]
+});	  
+var marker6 = new L.marker([-90000,-90000], {
+	icon:icon6}).addTo(map);
+	
+var icon7 = L.icon({
+    iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png',
+    iconSize:  [19, 45],
+	  iconAnchor: [8, 45],
+	  popupAnchor: [-3, 0]
+});	  
+var marker7 = new L.marker([-90000,-90000], {
+	icon:icon7}).addTo(map);
+	
+var icon8 = L.icon({
+    iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-yellow.png',
+    iconSize:  [19, 45],
+	  iconAnchor: [8, 45],
+	  popupAnchor: [-3, 0]
+});	  
+var marker8 = new L.marker([-90000,-90000], {
+	icon:icon8}).addTo(map);
+	
+var icon9 = L.icon({
+    iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-orange.png',
+    iconSize:  [19, 45],
+	  iconAnchor: [8, 45],
+	  popupAnchor: [-3, 0]
+});	  
+var marker9 = new L.marker([-90000,-90000], {
+	icon:icon9}).addTo(map);
+	
+	
+
+var icon10 = L.icon({
+    iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png',
+    iconSize:  [19, 45],
+	  iconAnchor: [8, 45],
+	  popupAnchor: [-3, 0]
+});	  
+var marker10 = new L.marker([-90000,-90000], {
+	icon:icon10}).addTo(map);
+	
+	
+	
+	
+
 
 
 var pointA = new L.LatLng(-25.7566505, +28.2783488);
@@ -280,7 +399,7 @@ firstpolyline.remove()
 firstpolyline.addTo(map);
 
 var firstpolyline1 = new L.Polyline(pointList, {
-    color: '#FF5733',
+    color: '#85144B',
     weight: 3,
     opacity: 0.5,
     smoothFactor: 1
@@ -290,7 +409,7 @@ firstpolyline1.remove()
 firstpolyline1.addTo(map);
 
 var firstpolyline2 = new L.Polyline(pointList, {
-    color: '#FFC300',
+    color: '#001f3f',
     weight: 3,
     opacity: 0.5,
     smoothFactor: 1
@@ -301,7 +420,7 @@ firstpolyline2.addTo(map);
 
 
 var firstpolyline3 = new L.Polyline(pointList, {
-    color: '#DAF7A6',
+    color: '#FF5733',
     weight: 3,
     opacity: 0.5,
     smoothFactor: 1
@@ -312,7 +431,7 @@ firstpolyline3.addTo(map);
 
 
 var firstpolyline4 = new L.Polyline(pointList, {
-    color: '#3D9970',
+    color: '#00FFFF',
     weight: 3,
     opacity: 0.5,
     smoothFactor: 1
@@ -323,7 +442,7 @@ firstpolyline4.addTo(map);
 
 
 var firstpolyline5 = new L.Polyline(pointList, {
-    color: '#7FDBFF',
+    color: '#DAF7A6',
     weight: 3,
     opacity: 0.5,
     smoothFactor: 1
@@ -334,7 +453,7 @@ firstpolyline5.addTo(map);
 
 
 var firstpolyline6 = new L.Polyline(pointList, {
-    color: '#B10DC9',
+    color: '#FFC300',
     weight: 3,
     opacity: 0.5,
     smoothFactor: 1
@@ -344,7 +463,7 @@ firstpolyline6.remove()
 firstpolyline6.addTo(map);
 
 var firstpolyline7 = new L.Polyline(pointList, {
-    color: '#F012BE',
+    color: '#7FDBFF',
     weight: 3,
     opacity: 0.5,
     smoothFactor: 1
@@ -355,7 +474,7 @@ firstpolyline7.addTo(map);
 
 
 var firstpolyline8 = new L.Polyline(pointList, {
-    color: '#FF851B',
+    color: '#B10DC9',
     weight: 3,
     opacity: 0.5,
     smoothFactor: 1
@@ -366,7 +485,7 @@ firstpolyline8.addTo(map);
 
 
 var firstpolyline9 = new L.Polyline(pointList, {
-    color: '#85144B',
+    color: '#3D9970',
     weight: 3,
     opacity: 0.5,
     smoothFactor: 1
@@ -376,7 +495,7 @@ firstpolyline9.remove()
 firstpolyline9.addTo(map);
 
 var firstpolyline10 = new L.Polyline(pointList, {
-    color: '#001f3f',
+    color: '#FF851B',
     weight: 3,
     opacity: 0.5,
     smoothFactor: 1
@@ -543,12 +662,18 @@ function onMessageArrived(message) {
 					  console.log(topic_subscribe_bracelet.length);
 					  console.log(message_recieved_topic);
 					  console.log(topic_subscribe_bracelet[0]);
+					  var trackmark = false;
 					  var index_recieved = -1;
 					  for (var i = 0 ; i < topic_subscribe_bracelet.length; i++){
 						  var string_topic = ""+message_recieved_topic;
 						  if (string_topic === topic_subscribe_bracelet[i]){
 							  index_recieved = topic_subscribe_index[i];
 							  console.log("Received message for bracelet: " ,  topic_subscribe_bracelet[i] , " with index " , index_recieved);
+							  if (document.getElementById("checkBoxFoll").checked == true){
+								  console.log("what to track = " ,  document.getElementById("trackdevice").value); 
+								  if (document.getElementById("trackdevice").value === string_topic)
+									  {trackmark=true;}
+							  }
 						  }
 						  
 						  
@@ -568,11 +693,11 @@ function onMessageArrived(message) {
 										
 									    var newLatLng = new L.LatLng(latValue, longValue);
 									    marker1.setLatLng(newLatLng); 
-									    if (document.getElementById("checkBoxFoll").checked == true){
+									    if (trackmark){
 									    	map.setView([latValue,longValue],18)
-									    }
+									    
 									    latv.innerHTML = "Lat = "+ latValue + "";
-									    longv.innerHTML = "Long = "+ longValue + "";
+									    longv.innerHTML = "Long = "+ longValue + "";}
 							      
 							      break;
 							    case 1:
@@ -581,11 +706,11 @@ function onMessageArrived(message) {
 									
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker2.setLatLng(newLatLng); 
-								    if (document.getElementById("checkBoxFoll").checked == true){
+								    if (trackmark){
 								    	map.setView([latValue,longValue],18)
-								    }
+								    
 								    latv.innerHTML = "Lat = "+ latValue + "";
-								    longv.innerHTML = "Long = "+ longValue + "";
+								    longv.innerHTML = "Long = "+ longValue + "";}
 							      
 							      break;
 							    case 2:
@@ -594,11 +719,11 @@ function onMessageArrived(message) {
 									
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker3.setLatLng(newLatLng); 
-								    if (document.getElementById("checkBoxFoll").checked == true){
+								    if (trackmark){
 								    	map.setView([latValue,longValue],18)
-								    }
+								    
 								    latv.innerHTML = "Lat = "+ latValue + "";
-								    longv.innerHTML = "Long = "+ longValue + "";
+								    longv.innerHTML = "Long = "+ longValue + "";}
 								      
 								   break;
 							    case 3:
@@ -607,11 +732,11 @@ function onMessageArrived(message) {
 									
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker4.setLatLng(newLatLng); 
-								    if (document.getElementById("checkBoxFoll").checked == true){
+								    if (trackmark){
 								    	map.setView([latValue,longValue],18)
-								    }
+								    
 								    latv.innerHTML = "Lat = "+ latValue + "";
-								    longv.innerHTML = "Long = "+ longValue + "";
+								    longv.innerHTML = "Long = "+ longValue + "";}
 								      
 								      break;
 							    case 4:
@@ -620,7 +745,7 @@ function onMessageArrived(message) {
 									
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker5.setLatLng(newLatLng); 
-								    if (document.getElementById("checkBoxFoll").checked == true){
+								    if (trackmark){
 								    	map.setView([latValue,longValue],18)
 								    }
 								    latv.innerHTML = "Lat = "+ latValue + "";
@@ -633,7 +758,7 @@ function onMessageArrived(message) {
 									
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker6.setLatLng(newLatLng); 
-								    if (document.getElementById("checkBoxFoll").checked == true){
+								    if (trackmark){
 								    	map.setView([latValue,longValue],18)
 								    }
 								    latv.innerHTML = "Lat = "+ latValue + "";
@@ -646,7 +771,7 @@ function onMessageArrived(message) {
 									
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker7.setLatLng(newLatLng); 
-								    if (document.getElementById("checkBoxFoll").checked == true){
+								    if (trackmark){
 								    	map.setView([latValue,longValue],18)
 								    }
 								    latv.innerHTML = "Lat = "+ latValue + "";
@@ -659,7 +784,7 @@ function onMessageArrived(message) {
 									
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker8.setLatLng(newLatLng); 
-								    if (document.getElementById("checkBoxFoll").checked == true){
+								    if (trackmark){
 								    	map.setView([latValue,longValue],18)
 								    }
 								    latv.innerHTML = "Lat = "+ latValue + "";
@@ -673,7 +798,7 @@ function onMessageArrived(message) {
 									
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker9.setLatLng(newLatLng); 
-								    if (document.getElementById("checkBoxFoll").checked == true){
+								    if (trackmark){
 								    	map.setView([latValue,longValue],18)
 								    }
 								    latv.innerHTML = "Lat = "+ latValue + "";
@@ -686,7 +811,7 @@ function onMessageArrived(message) {
 									
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker10.setLatLng(newLatLng); 
-								    if (document.getElementById("checkBoxFoll").checked == true){
+								    if (trackmark){
 								    	map.setView([latValue,longValue],18)
 								    }
 								    latv.innerHTML = "Lat = "+ latValue + "";
@@ -727,7 +852,7 @@ function onMessageArrived(message) {
 
 
 function start_topic(){
-
+	 var innerHTML = "|&nbsp;&nbsp;";
 	 var option1 = document.getElementById("option1");
 	  if (option1.checked) {// for tracking single bracelet
 
@@ -776,6 +901,7 @@ function start_topic(){
 			console.log("subscribtion done");
 	  }else{// for multiple bracelets
 		  var count_for_index = 0;
+	  	 
 		  for (var i = 0 ; i <10 ; i++){
 			  var id_string_checkbox = "checkbox"+(i+1);
 			  var id_string_bracelet = "bracelet"+(i+1);
@@ -787,11 +913,23 @@ function start_topic(){
 				  topic_subscribe_bracelet[count_for_index] = topic;
 				  client.subscribe(topic);  
 				  console.log("subscribtion to - ",topic);
+				  
+				  //adding list to the following list select input
+				  follow_list = document.getElementById('trackdevice');
+				  myOption = document.createElement("option");
+				  myOption.text =document.getElementById(id_string_bracelet).value;
+				  myOption.value = topic;
+				  follow_list.appendChild(myOption);
+				  innerHTML = innerHTML + '<img src="'+icon_list_url[i]+'"  width= "15px;" > - '+document.getElementById(id_string_bracelet).value+'&nbsp;&nbsp;|&nbsp;&nbsp;' ;
+				  
+				  
 			  }
 			  count_for_index = count_for_index + 1; 
 			  
 			  
 		  }
+		  console.log("innerHTML - ",innerHTML);
+		  document.getElementById("keyofmarker").innerHTML = innerHTML;
 	  
 			setTimeout(function(){
 				polygon1 = new L.polygon([
