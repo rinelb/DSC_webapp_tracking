@@ -5,8 +5,8 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>Map</groupId>
-  <artifactId>CSIRGeoTracker</artifactId>
-  <version>1.0.0</version>
+  <artifactId>geotracker</artifactId>
+  <version>2.0.0</version>
   <packaging>war</packaging>
 
   <name>CSIRGeoTracker Maven Webapp</name>
@@ -31,6 +31,15 @@
   
   <build>
     <plugins>
+		
+		<plugin>
+		      <groupId>org.apache.maven.plugins</groupId>
+		      <artifactId>maven-war-plugin</artifactId>
+		      <version>3.2.3</version>
+		      <configuration>
+		        <warName>geotracker</warName>
+		      </configuration>
+    </plugin>
         <plugin>
             <artifactId>maven-compiler-plugin</artifactId>
             <configuration>
@@ -38,6 +47,14 @@
                 <target>1.7</target>
             </configuration>
         </plugin>
+        <plugin>
+	      <groupId>org.apache.tomcat.maven</groupId>
+	      <artifactId>tomcat7-maven-plugin</artifactId>
+	      <version>2.2</version>
+	      <configuration>
+	        <path>/geotracker</path>
+	      </configuration>
+    </plugin>
     </plugins>
 </build>
 

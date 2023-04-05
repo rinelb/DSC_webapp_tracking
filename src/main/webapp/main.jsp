@@ -4,7 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Map Tracking</title>
+<title>Geo Tracker</title> 
+    
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
 </head>
 <style>
 #map { height: 600px; }
@@ -20,9 +23,14 @@
  <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
    crossorigin=""></script>
+   
+   <!-- Add jQuery and Bootstrap JavaScript libraries -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   
 <body>
 <center>
-<h1  style="display: flex;text-align: top;align-items: center;justify-content: center;" ><img src ="img/ezgif.com-gif-maker.png" width="105" height="50"/>&nbsp; &nbsp; 
+<h1  style="display: flex;text-align: top;align-items: center;justify-content: center;" ><img src ="img/logo.png" width="135" height="60"/>&nbsp; &nbsp; 
 <img src ="img/cropped-newnew.png" width="150" height="60" /><span style="font-size:50px;">&nbsp;- Geo Tracker</span></h1><br>
 <div style="display:none">
       <input type="radio" id="option1" name="options" value="option1" >
@@ -31,10 +39,10 @@
       <input type="radio" id="option2" name="options" value="option2" checked>
       <label for="option2">track munitply bracelets</label>
     </div>
-    <button id="hideGui" onclick="Hide()">Hide devices</button>
+    <button type="button" class="btn btn-primary" my-2 id="hideGui" onclick="Hide()">Hide devices</button>  
  <div id="bracelet_list">   
 <div style="display:none"> Device <input id="inputTopic" value="ems-00002"></input>  <br></div> 
-
+ <div class="form-group"  my-2 >
 		<select id = "bracelet1" onchange = "favTutorial()" >  
 		</select>  <input type="checkbox" id="checkbox1" ><br>
 		<select id = "bracelet2" onchange = "favTutorial()" >  
@@ -55,10 +63,11 @@
 		</select>  <input type="checkbox" id="checkbox9" ><br>
 		<select id = "bracelet10" onchange = "favTutorial()" >  
 		</select>  <input type="checkbox" id="checkbox10" ><br>
-		
+	  </div>	
 </div>
+ 
 
-<button onclick="start_topic()">Start</button>
+<button id="start_button" type="button" class="btn btn-danger" my-2 onclick="start_topic()">connecting</button>
 
 
 
@@ -541,6 +550,9 @@ console.log("connect ran");
 function onConnect() {
   // Once a connection has been made, make a subscppwription and send a message.
   console.log("-------------- onConnect --------------------");
+  document.getElementById("start_button").classList.toggle("btn-danger");
+  document.getElementById("start_button").classList.toggle("btn-primary");
+  document.getElementById("start_button").innerHTML = "start"; 
 
 }
 
@@ -977,6 +989,8 @@ function start_topic(){
 	  
 		  
 	  }
+	  document.getElementById("start_button").classList.toggle("btn-primary");
+	  document.getElementById("start_button").classList.toggle("btn-success");
 	
 }
 
