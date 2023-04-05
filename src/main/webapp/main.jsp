@@ -29,54 +29,80 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
    
 <body>
-<center>
 <h1  style="display: flex;text-align: top;align-items: center;justify-content: center;" ><img src ="img/logo.png" width="135" height="60"/>&nbsp; &nbsp; 
-<img src ="img/cropped-newnew.png" width="150" height="60" /><span style="font-size:50px;">&nbsp;- Geo Tracker</span></h1><br>
-<div style="display:none">
-      <input type="radio" id="option1" name="options" value="option1" >
-      <label for="option1">track one bracelet</label>
-    
-      <input type="radio" id="option2" name="options" value="option2" checked>
-      <label for="option2">track munitply bracelets</label>
-    </div>
-    <button type="button" class="btn btn-primary" my-2 id="hideGui" onclick="Hide()">Hide devices</button>  
- <div id="bracelet_list">   
-<div style="display:none"> Device <input id="inputTopic" value="ems-00002"></input>  <br></div> 
- <div class="form-group"  my-2 >
-		<select id = "bracelet1" onchange = "favTutorial()" >  
-		</select>  <input type="checkbox" id="checkbox1" ><br>
-		<select id = "bracelet2" onchange = "favTutorial()" >  
-		</select>  <input type="checkbox" id="checkbox2"  ><br>
-		<select id = "bracelet3" onchange = "favTutorial()" >  
-		</select>  <input type="checkbox" id="checkbox3"><br>
-		<select id = "bracelet4" onchange = "favTutorial()" >  
-		</select>  <input type="checkbox" id="checkbox4" ><br>
-		<select id = "bracelet5" onchange = "favTutorial()" >  
-		</select>  <input type="checkbox" id="checkbox5" ><br>
-		<select id = "bracelet6" onchange = "favTutorial()" >  
-		</select>  <input type="checkbox" id="checkbox6" ><br>
-		<select id = "bracelet7" onchange = "favTutorial()" >  
-		</select>  <input type="checkbox" id="checkbox7" ><br>
-		<select id = "bracelet8" onchange = "favTutorial()" >  
-		</select>  <input type="checkbox" id="checkbox8" ><br>
-		<select id = "bracelet9" onchange = "favTutorial()" >  
-		</select>  <input type="checkbox" id="checkbox9" ><br>
-		<select id = "bracelet10" onchange = "favTutorial()" >  
-		</select>  <input type="checkbox" id="checkbox10" ><br>
-	  </div>	
-</div>
- 
-
-<button id="start_button" type="button" class="btn btn-danger" my-2 onclick="start_topic()">connecting</button>
-
-
-
-<p id="lat"></p>
-<p id="long">
-<p id="time"></p></p>
-<input type="checkbox" id="checkBoxFoll" checked="false">
-<label for="checkBoxFoll">Center the marker on the map to : </label> <select id = "trackdevice" onchange = "favTutorial()" >  </select> </center><br>
-<center><div id="keyofmarker"></div></center>
+<img src ="img/cropped-newnew.png" width="150" height="60" /><span style="font-size:50px;">&nbsp; Geo Tracker</span></h1><br>
+<table class="table table-bordered">
+  <tbody>
+    <tr>
+		<td>
+		<center>
+				<div style="display:none">
+				      <input type="radio" id="option1" name="options" value="option1" >
+				      <label for="option1">track one bracelet</label>
+				    
+				      <input type="radio" id="option2" name="options" value="option2" checked>
+				      <label for="option2">track munitply bracelets</label>
+				    </div>
+				  <div style=padding-bottom:15px;"  my-2>  
+				    <button type="button" class="btn btn-primary" id="hideGui" onclick="Hide()">Hide Devices</button> &nbsp;  &nbsp; 
+				   
+				<button  id="start_button" type="button" class="btn btn-danger"  onclick="start_topic()">Connecting</button>
+				</div>
+				 <div id="bracelet_list">   
+				 
+				<div style="display:none"> Device <input id="inputTopic" value="ems-00002"></input>  <br></div> 
+				 <div class="form-group"  my-2 >
+						<select id = "bracelet1" onchange = "favTutorial()" >  
+						</select>  <input type="checkbox" id="checkbox1" ><br>
+						<select id = "bracelet2" onchange = "favTutorial()" >  
+						</select>  <input type="checkbox" id="checkbox2"  ><br>
+						<select id = "bracelet3" onchange = "favTutorial()" >  
+						</select>  <input type="checkbox" id="checkbox3"><br>
+						<select id = "bracelet4" onchange = "favTutorial()" >  
+						</select>  <input type="checkbox" id="checkbox4" ><br>
+						<select id = "bracelet5" onchange = "favTutorial()" >  
+						</select>  <input type="checkbox" id="checkbox5" ><br>
+						<select id = "bracelet6" onchange = "favTutorial()" >  
+						</select>  <input type="checkbox" id="checkbox6" ><br>
+						<select id = "bracelet7" onchange = "favTutorial()" >  
+						</select>  <input type="checkbox" id="checkbox7" ><br>
+						<select id = "bracelet8" onchange = "favTutorial()" >  
+						</select>  <input type="checkbox" id="checkbox8" ><br>
+						<select id = "bracelet9" onchange = "favTutorial()" >  
+						</select>  <input type="checkbox" id="checkbox9" ><br>
+						<select id = "bracelet10" onchange = "favTutorial()" >  
+						</select>  <input type="checkbox" id="checkbox10" ><br>
+					  </div>
+					  
+					  	
+				</div>
+				 
+				
+				</center>
+		</td>
+		
+		<td>
+			<center>
+			<div style="padding-top:5px;"  my-2>
+						<p id="bracelet_lat_long"></p>
+				<p id="lat"></p>
+				<p id="long">
+				<p id="time"></p></p>
+				</div>
+				
+			</center>
+		
+		</td>
+		
+  </tr>
+  </tbody>
+</table>
+<center>
+<div style="padding-top:15px;"  my-2>
+				<input type="checkbox" id="checkBoxFoll" checked="false">
+				<label for="checkBoxFoll">Center the marker on the map to : </label> <select id = "trackdevice" onchange = "favTutorial()" >  </select></div> 
+<br>
+<div id="keyofmarker"></div></center>
 <div id="map"></div>
 
 </body>
@@ -102,11 +128,11 @@ for (let i = 1; i < 11; i++) {
 
 <script>  
 function Hide() {  
-	if (document.getElementById("hideGui").innerHTML === "show devices"){
-		document.getElementById("hideGui").innerHTML = "hide devices"
+	if (document.getElementById("hideGui").innerHTML === "Show Devices"){
+		document.getElementById("hideGui").innerHTML = "Hide Devices"
 		document.getElementById("bracelet_list").style.display = "block";
 	}else{
-		document.getElementById("hideGui").innerHTML = "show devices";
+		document.getElementById("hideGui").innerHTML = "Show Devices";
 		document.getElementById("bracelet_list").style.display = "none";
 	}
   }
@@ -245,12 +271,13 @@ var icon_list_url = ["https://cdn.jsdelivr.net/gh/pointhi/leaflet-color-markers@
 	"https://cdn.jsdelivr.net/gh/pointhi/leaflet-color-markers@master/img/marker-icon-gold.png",
 	"https://cdn.jsdelivr.net/gh/pointhi/leaflet-color-markers@master/img/marker-icon-grey.png",
 	"https://cdn.jsdelivr.net/gh/pointhi/leaflet-color-markers@master/img/marker-icon-orange.png",
-	"https://cdn.jsdelivr.net/gh/pointhi/leaflet-color-markers@master/img/marker-icon-green.png"];
+	"https://cdn.pixabay.com/photo/2016/12/18/11/04/pointer-1915456_960_720.png"];
 	
 var all_devices = [];
 var all_topice = [];
 var topic_subscribe_index = [];
 var topic_subscribe_bracelet = [];
+var topic_subscribe_bracelet_name = [];
 
 var follow_device = [];
 
@@ -348,7 +375,7 @@ var marker9 = new L.marker([-90000,-90000], {
 	
 
 var icon10 = L.icon({
-    iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png',
+    iconUrl: 'https://cdn.pixabay.com/photo/2016/12/18/11/04/pointer-1915456_960_720.png',
     iconSize:  [19, 45],
 	  iconAnchor: [8, 45],
 	  popupAnchor: [-3, 0]
@@ -451,7 +478,7 @@ firstpolyline4.addTo(map);
 
 
 var firstpolyline5 = new L.Polyline(pointList, {
-    color: '#DAF7A6',
+    color: '#1c070d',
     weight: 3,
     opacity: 0.5,
     smoothFactor: 1
@@ -552,7 +579,7 @@ function onConnect() {
   console.log("-------------- onConnect --------------------");
   document.getElementById("start_button").classList.toggle("btn-danger");
   document.getElementById("start_button").classList.toggle("btn-primary");
-  document.getElementById("start_button").innerHTML = "start"; 
+  document.getElementById("start_button").innerHTML = "Start Monitoring "; 
 
 }
 
@@ -572,6 +599,7 @@ function onMessageArrived(message) {
  			  // Messaging decoding ---------------------------------------------
  			  var latValue;
 				var longValue;
+				var changeTextDisplay = false;
  			  var payload1 = message.payloadBytes
 			  var length = payload1.length;
 			  var buffer1 = new ArrayBuffer(length);
@@ -635,8 +663,8 @@ function onMessageArrived(message) {
 			    var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
 			    d.setUTCSeconds((object.timestamp)/1000);
 			    timeDisplay.innerHTML = "Time = "+ d;
-			    console.log( object.metric[1].name +": "+object.metric[1].floatValue);
-			    console.log( object.metric[2].name +": "+object.metric[2].floatValue);
+			    //console.log( object.metric[1].name +": "+object.metric[1].floatValue);
+			    //console.log( object.metric[2].name +": "+object.metric[2].floatValue);
 				
 				var metric_size = object.metric.length;
 				console.log( "metric_size = " + metric_size );
@@ -686,6 +714,8 @@ function onMessageArrived(message) {
 								  if (document.getElementById("trackdevice").value === string_topic)
 									  {trackmark=true;}
 							  }
+							  if (document.getElementById("trackdevice").value === string_topic)
+							  {changeTextDisplay=true;}
 						  }
 						  
 						  
@@ -706,8 +736,10 @@ function onMessageArrived(message) {
 									    var newLatLng = new L.LatLng(latValue, longValue);
 									    marker1.setLatLng(newLatLng); 
 									    if (trackmark){
-									    	map.setView([latValue,longValue],18)
-									    
+									    	map.setView([latValue,longValue],18);
+									    }
+									    if (changeTextDisplay){
+									    document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[0]+'</b></span>';
 									    latv.innerHTML = "Lat = "+ latValue + "";
 									    longv.innerHTML = "Long = "+ longValue + "";}
 							      
@@ -719,10 +751,11 @@ function onMessageArrived(message) {
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker2.setLatLng(newLatLng); 
 								    if (trackmark){
-								    	map.setView([latValue,longValue],18)
-								    
-								    latv.innerHTML = "Lat = "+ latValue + "";
-								    longv.innerHTML = "Long = "+ longValue + "";}
+								    	map.setView([latValue,longValue],18)}
+								    if (changeTextDisplay){
+								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[1]+'</b></span>';
+									    latv.innerHTML = "Lat = "+ latValue + "";
+									    longv.innerHTML = "Long = "+ longValue + "";}
 							      
 							      break;
 							    case 2:
@@ -732,10 +765,11 @@ function onMessageArrived(message) {
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker3.setLatLng(newLatLng); 
 								    if (trackmark){
-								    	map.setView([latValue,longValue],18)
-								    
-								    latv.innerHTML = "Lat = "+ latValue + "";
-								    longv.innerHTML = "Long = "+ longValue + "";}
+								    	map.setView([latValue,longValue],18)}
+								    if (changeTextDisplay){
+								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[2]+'</b></span>';
+									    latv.innerHTML = "Lat = "+ latValue + "";
+									    longv.innerHTML = "Long = "+ longValue + "";}
 								      
 								   break;
 							    case 3:
@@ -745,10 +779,11 @@ function onMessageArrived(message) {
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker4.setLatLng(newLatLng); 
 								    if (trackmark){
-								    	map.setView([latValue,longValue],18)
-								    
-								    latv.innerHTML = "Lat = "+ latValue + "";
-								    longv.innerHTML = "Long = "+ longValue + "";}
+								    	map.setView([latValue,longValue],18)}
+								    if (changeTextDisplay){
+								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[3]+'</b></span>';
+									    latv.innerHTML = "Lat = "+ latValue + "";
+									    longv.innerHTML = "Long = "+ longValue + "";}
 								      
 								      break;
 							    case 4:
@@ -760,8 +795,10 @@ function onMessageArrived(message) {
 								    if (trackmark){
 								    	map.setView([latValue,longValue],18)
 								    }
-								    latv.innerHTML = "Lat = "+ latValue + "";
-								    longv.innerHTML = "Long = "+ longValue + "";
+								    if (changeTextDisplay){
+								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[4]+'</b></span>';
+									    latv.innerHTML = "Lat = "+ latValue + "";
+									    longv.innerHTML = "Long = "+ longValue + "";}
 								      
 								      break;
 								      
@@ -773,8 +810,10 @@ function onMessageArrived(message) {
 								    if (trackmark){
 								    	map.setView([latValue,longValue],18)
 								    }
-								    latv.innerHTML = "Lat = "+ latValue + "";
-								    longv.innerHTML = "Long = "+ longValue + "";
+								    if (changeTextDisplay){
+								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[5]+'</b></span>';
+									    latv.innerHTML = "Lat = "+ latValue + "";
+									    longv.innerHTML = "Long = "+ longValue + "";}
 								      
 								      break;
 							    case 6:
@@ -786,8 +825,10 @@ function onMessageArrived(message) {
 								    if (trackmark){
 								    	map.setView([latValue,longValue],18)
 								    }
-								    latv.innerHTML = "Lat = "+ latValue + "";
-								    longv.innerHTML = "Long = "+ longValue + "";
+								    if (changeTextDisplay){
+								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[6]+'</b></span>';
+									    latv.innerHTML = "Lat = "+ latValue + "";
+									    longv.innerHTML = "Long = "+ longValue + "";}
 								      
 								      break;
 							    case 7:
@@ -799,8 +840,10 @@ function onMessageArrived(message) {
 								    if (trackmark){
 								    	map.setView([latValue,longValue],18)
 								    }
-								    latv.innerHTML = "Lat = "+ latValue + "";
-								    longv.innerHTML = "Long = "+ longValue + "";
+								    if (changeTextDisplay){
+								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[7]+'</b></span>';
+									    latv.innerHTML = "Lat = "+ latValue + "";
+									    longv.innerHTML = "Long = "+ longValue + "";}
 								      
 								      break;
 								      
@@ -813,8 +856,10 @@ function onMessageArrived(message) {
 								    if (trackmark){
 								    	map.setView([latValue,longValue],18)
 								    }
-								    latv.innerHTML = "Lat = "+ latValue + "";
-								    longv.innerHTML = "Long = "+ longValue + "";
+								    if (changeTextDisplay){
+								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[8]+'</b></span>';
+									    latv.innerHTML = "Lat = "+ latValue + "";
+									    longv.innerHTML = "Long = "+ longValue + "";}
 								      
 								      break;
 							    case 9:
@@ -826,8 +871,10 @@ function onMessageArrived(message) {
 								    if (trackmark){
 								    	map.setView([latValue,longValue],18)
 								    }
-								    latv.innerHTML = "Lat = "+ latValue + "";
-								    longv.innerHTML = "Long = "+ longValue + "";
+								    if (changeTextDisplay){
+								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[9]+'</b></span>';
+									    latv.innerHTML = "Lat = "+ latValue + "";
+									    longv.innerHTML = "Long = "+ longValue + "";}
 								      
 								      break;
 							    default:
@@ -923,6 +970,7 @@ function start_topic(){
 				  var topic = "kapua-sys/"+document.getElementById(id_string_bracelet).value+"/data" 
 				  topic_subscribe_index[count_for_index] = i;
 				  topic_subscribe_bracelet[count_for_index] = topic;
+				  topic_subscribe_bracelet_name[count_for_index] = document.getElementById(id_string_bracelet).value;
 				  client.subscribe(topic);  
 				  console.log("subscribtion to - ",topic);
 				  
