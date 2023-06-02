@@ -87,7 +87,8 @@
 						<p id="bracelet_lat_long"></p>
 				<p id="lat"></p>
 				<p id="long">
-				<p id="time"></p></p>
+				<p id="time"></p><p id="rssi"></p></p>
+				
 				</div>
 				
 			</center>
@@ -559,6 +560,7 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 var latv = document.getElementById("lat"); 
 var longv = document.getElementById("long"); 
 var timeDisplay = document.getElementById("time"); 
+var rssiDisplay = document.getElementById("rssi"); 
 latv.innerHTML = "waiting for coordinates"; 
 // Create a client instance
 // client = new Paho.MQTT.Client("broker.hivemq.com", Number(8000), "clientIdWebAppTest");
@@ -598,8 +600,9 @@ function onMessageArrived(message) {
  			  
  			  // Messaging decoding ---------------------------------------------
  			  var latValue;
-				var longValue;
-				var changeTextDisplay = false;
+			  var longValue;
+			  var rssi;	
+			  var changeTextDisplay = false;
  			  var payload1 = message.payloadBytes
 			  var length = payload1.length;
 			  var buffer1 = new ArrayBuffer(length);
@@ -676,7 +679,12 @@ function onMessageArrived(message) {
 				if (object.metric[i].name.includes("long") ){
 						longValue = object.metric[i].floatValue;
 					}
+				if (object.metric[i].name.includes("rssi") ){
+					rssi = object.metric[i].floatValue;
+				    }
 				}
+				
+				 
 				
 				
 				
@@ -692,6 +700,7 @@ function onMessageArrived(message) {
 									    }
 									    latv.innerHTML = "Lat = "+ latValue + "";
 									    longv.innerHTML = "Long = "+ longValue + "";
+									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
 						
 									    
 							  
@@ -739,9 +748,12 @@ function onMessageArrived(message) {
 									    	map.setView([latValue,longValue],18);
 									    }
 									    if (changeTextDisplay){
-									    document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[0]+'</b></span>';
-									    latv.innerHTML = "Lat = "+ latValue + "";
-									    longv.innerHTML = "Long = "+ longValue + "";}
+										    document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[0]+'</b></span>';
+										    latv.innerHTML = "Lat = "+ latValue + "";
+										    longv.innerHTML = "Long = "+ longValue + "";
+										    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
+									    }
+									    
 							      
 							      break;
 							    case 1:
@@ -755,7 +767,10 @@ function onMessageArrived(message) {
 								    if (changeTextDisplay){
 								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[1]+'</b></span>';
 									    latv.innerHTML = "Lat = "+ latValue + "";
-									    longv.innerHTML = "Long = "+ longValue + "";}
+									    longv.innerHTML = "Long = "+ longValue + "";
+									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";    
+								    }
+								    
 							      
 							      break;
 							    case 2:
@@ -769,7 +784,9 @@ function onMessageArrived(message) {
 								    if (changeTextDisplay){
 								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[2]+'</b></span>';
 									    latv.innerHTML = "Lat = "+ latValue + "";
-									    longv.innerHTML = "Long = "+ longValue + "";}
+									    longv.innerHTML = "Long = "+ longValue + "";
+									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
+									    }
 								      
 								   break;
 							    case 3:
@@ -783,7 +800,9 @@ function onMessageArrived(message) {
 								    if (changeTextDisplay){
 								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[3]+'</b></span>';
 									    latv.innerHTML = "Lat = "+ latValue + "";
-									    longv.innerHTML = "Long = "+ longValue + "";}
+									    longv.innerHTML = "Long = "+ longValue + "";
+									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
+									    }
 								      
 								      break;
 							    case 4:
@@ -798,7 +817,8 @@ function onMessageArrived(message) {
 								    if (changeTextDisplay){
 								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[4]+'</b></span>';
 									    latv.innerHTML = "Lat = "+ latValue + "";
-									    longv.innerHTML = "Long = "+ longValue + "";}
+									    longv.innerHTML = "Long = "+ longValue + "";
+									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";}
 								      
 								      break;
 								      
@@ -813,7 +833,8 @@ function onMessageArrived(message) {
 								    if (changeTextDisplay){
 								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[5]+'</b></span>';
 									    latv.innerHTML = "Lat = "+ latValue + "";
-									    longv.innerHTML = "Long = "+ longValue + "";}
+									    longv.innerHTML = "Long = "+ longValue + "";
+									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";}
 								      
 								      break;
 							    case 6:
@@ -828,7 +849,8 @@ function onMessageArrived(message) {
 								    if (changeTextDisplay){
 								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[6]+'</b></span>';
 									    latv.innerHTML = "Lat = "+ latValue + "";
-									    longv.innerHTML = "Long = "+ longValue + "";}
+									    longv.innerHTML = "Long = "+ longValue + "";
+									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";}
 								      
 								      break;
 							    case 7:
@@ -843,7 +865,8 @@ function onMessageArrived(message) {
 								    if (changeTextDisplay){
 								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[7]+'</b></span>';
 									    latv.innerHTML = "Lat = "+ latValue + "";
-									    longv.innerHTML = "Long = "+ longValue + "";}
+									    longv.innerHTML = "Long = "+ longValue + "";
+									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";}
 								      
 								      break;
 								      
@@ -859,7 +882,8 @@ function onMessageArrived(message) {
 								    if (changeTextDisplay){
 								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[8]+'</b></span>';
 									    latv.innerHTML = "Lat = "+ latValue + "";
-									    longv.innerHTML = "Long = "+ longValue + "";}
+									    longv.innerHTML = "Long = "+ longValue + "";
+									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";}
 								      
 								      break;
 							    case 9:
@@ -874,7 +898,8 @@ function onMessageArrived(message) {
 								    if (changeTextDisplay){
 								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[9]+'</b></span>';
 									    latv.innerHTML = "Lat = "+ latValue + "";
-									    longv.innerHTML = "Long = "+ longValue + "";}
+									    longv.innerHTML = "Long = "+ longValue + "";
+									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";}
 								      
 								      break;
 							    default:
