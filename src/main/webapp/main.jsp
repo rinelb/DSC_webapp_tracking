@@ -1,8 +1,10 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
+<!-- http://localhost:8080/geotracker/main.jsp -->
 <meta charset="UTF-8">
 <title>Geo Tracker</title> 
     
@@ -163,6 +165,7 @@ count7 = 6;
 count8 = 7;
 count9 = 8;
 count10 = 9;
+var zoomsize = 18
 
 
 
@@ -551,7 +554,7 @@ var polygon3;
 
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 14,
+    maxZoom: 18,
     id: 'mapbox/streets-v11',
     tileSize: 512,
     zoomOffset: -1,
@@ -697,7 +700,7 @@ function onMessageArrived(message) {
 									    var newLatLng = new L.LatLng(latValue, longValue);
 									    marker.setLatLng(newLatLng); 
 									    if (document.getElementById("checkBoxFoll").checked == true){
-									    	map.setView([latValue,longValue],18)
+									    	map.setView([latValue,longValue])
 									    }
 									    latv.innerHTML = "Lat = "+ latValue + "";
 									    longv.innerHTML = "Long = "+ longValue + "";
@@ -746,7 +749,7 @@ function onMessageArrived(message) {
 									    var newLatLng = new L.LatLng(latValue, longValue);
 									    marker1.setLatLng(newLatLng); 
 									    if (trackmark){
-									    	map.setView([latValue,longValue],18);
+									    	map.setView([latValue,longValue]);
 									    }
 									    if (changeTextDisplay){
 										    document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[0]+'</b></span>';
@@ -764,7 +767,7 @@ function onMessageArrived(message) {
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker2.setLatLng(newLatLng); 
 								    if (trackmark){
-								    	map.setView([latValue,longValue],18)}
+								    	map.setView([latValue,longValue])}
 								    if (changeTextDisplay){
 								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[1]+'</b></span>';
 									    latv.innerHTML = "Lat = "+ latValue + "";
@@ -781,7 +784,7 @@ function onMessageArrived(message) {
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker3.setLatLng(newLatLng); 
 								    if (trackmark){
-								    	map.setView([latValue,longValue],18)}
+								    	map.setView([latValue,longValue])}
 								    if (changeTextDisplay){
 								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[2]+'</b></span>';
 									    latv.innerHTML = "Lat = "+ latValue + "";
@@ -797,7 +800,7 @@ function onMessageArrived(message) {
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker4.setLatLng(newLatLng); 
 								    if (trackmark){
-								    	map.setView([latValue,longValue],18)}
+								    	map.setView([latValue,longValue])}
 								    if (changeTextDisplay){
 								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[3]+'</b></span>';
 									    latv.innerHTML = "Lat = "+ latValue + "";
@@ -813,7 +816,7 @@ function onMessageArrived(message) {
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker5.setLatLng(newLatLng); 
 								    if (trackmark){
-								    	map.setView([latValue,longValue],18)
+								    	map.setView([latValue,longValue])
 								    }
 								    if (changeTextDisplay){
 								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[4]+'</b></span>';
@@ -829,7 +832,7 @@ function onMessageArrived(message) {
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker6.setLatLng(newLatLng); 
 								    if (trackmark){
-								    	map.setView([latValue,longValue],18)
+								    	map.setView([latValue,longValue])
 								    }
 								    if (changeTextDisplay){
 								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[5]+'</b></span>';
@@ -845,7 +848,7 @@ function onMessageArrived(message) {
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker7.setLatLng(newLatLng); 
 								    if (trackmark){
-								    	map.setView([latValue,longValue],18)
+								    	map.setView([latValue,longValue])
 								    }
 								    if (changeTextDisplay){
 								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[6]+'</b></span>';
@@ -861,7 +864,7 @@ function onMessageArrived(message) {
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker8.setLatLng(newLatLng); 
 								    if (trackmark){
-								    	map.setView([latValue,longValue],18)
+								    	map.setView([latValue,longValue])
 								    }
 								    if (changeTextDisplay){
 								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[7]+'</b></span>';
@@ -878,7 +881,7 @@ function onMessageArrived(message) {
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker9.setLatLng(newLatLng); 
 								    if (trackmark){
-								    	map.setView([latValue,longValue],18)
+								    	map.setView([latValue,longValue])
 								    }
 								    if (changeTextDisplay){
 								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[8]+'</b></span>';
@@ -894,7 +897,7 @@ function onMessageArrived(message) {
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker10.setLatLng(newLatLng); 
 								    if (trackmark){
-								    	map.setView([latValue,longValue],18)
+								    	map.setView([latValue,longValue])
 								    }
 								    if (changeTextDisplay){
 								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[9]+'</b></span>';
