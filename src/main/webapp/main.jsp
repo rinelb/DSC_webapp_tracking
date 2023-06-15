@@ -55,25 +55,25 @@
 				<div style="display:none"> Device <input id="inputTopic" value="ems-00002"></input>  <br></div> 
 				 <div class="form-group"  my-2 >
 						<select id = "bracelet1" onchange = "favTutorial()" >  
-						</select>  &nbsp; <input type="checkbox" id="checkbox1" > &nbsp; <input type="text" id="name1" > <br>
+						</select>  &nbsp; <input type="checkbox" id="checkbox1" > &nbsp; <input type="text" id="name1" value="Robben Arjen" > <br>
 						<select id = "bracelet2" onchange = "favTutorial()" >  
-						</select>  &nbsp; <input type="checkbox" id="checkbox2"  >&nbsp; <input type="text" id="name2" ><br>
+						</select>  &nbsp; <input type="checkbox" id="checkbox2"  >&nbsp; <input type="text" id="name2" value="Zidane Zinedine" ><br>
 						<select id = "bracelet3" onchange = "favTutorial()" >  
-						</select>  &nbsp; <input type="checkbox" id="checkbox3">&nbsp; <input type="text" id="name3" ><br>
+						</select>  &nbsp; <input type="checkbox" id="checkbox3">&nbsp; <input type="text" id="name3" value="Moreira	Ronaldinho"><br>
 						<select id = "bracelet4" onchange = "favTutorial()" >  
-						</select>  &nbsp; <input type="checkbox" id="checkbox4" >&nbsp; <input type="text" id="name4" ><br>
+						</select>  &nbsp; <input type="checkbox" id="checkbox4" >&nbsp; <input type="text" id="name4" value="Modric Luka"><br>
 						<select id = "bracelet5" onchange = "favTutorial()" >  
-						</select>  &nbsp; <input type="checkbox" id="checkbox5" >&nbsp; <input type="text" id="name5" ><br>
+						</select>  &nbsp; <input type="checkbox" id="checkbox5" >&nbsp; <input type="text" id="name5" value="Ibrahimovic Zlatan"><br>
 						<select id = "bracelet6" onchange = "favTutorial()" >  
-						</select>  &nbsp; <input type="checkbox" id="checkbox6" >&nbsp; <input type="text" id="name6" ><br>
+						</select>  &nbsp; <input type="checkbox" id="checkbox6" >&nbsp; <input type="text" id="name6" value="Messi Lionel"><br>
 						<select id = "bracelet7" onchange = "favTutorial()" >  
-						</select>  &nbsp; <input type="checkbox" id="checkbox7" >&nbsp; <input type="text" id="name7" ><br>
+						</select>  &nbsp; <input type="checkbox" id="checkbox7" >&nbsp; <input type="text" id="name7" value="da Silva Santos Neymar Jr."><br>
 						<select id = "bracelet8" onchange = "favTutorial()" >  
-						</select> &nbsp; <input type="checkbox" id="checkbox8" >&nbsp; <input type="text" id="name8" ><br>
+						</select> &nbsp; <input type="checkbox" id="checkbox8" >&nbsp; <input type="text" id="name8" value="dos Santos Aveiro Ronaldo"><br>
 						<select id = "bracelet9" onchange = "favTutorial()" >  
-						</select>  &nbsp; <input type="checkbox" id="checkbox9" >&nbsp; <input type="text" id="name9" ><br>
+						</select>  &nbsp; <input type="checkbox" id="checkbox9" >&nbsp; <input type="text" id="name9" value="Mbappe Kylian"><br>
 						<select id = "bracelet10" onchange = "favTutorial()" >  
-						</select>  &nbsp; <input type="checkbox" id="checkbox10" >&nbsp; <input type="text" id="name10" ><br>
+						</select>  &nbsp; <input type="checkbox" id="checkbox10" >&nbsp; <input type="text" id="name10" value="Drogba Didier"><br>
 					  </div>
 					  
 					  	
@@ -1077,13 +1077,20 @@ function start_topic(){
 				  topic_subscribe_index[count_for_index] = i;
 				  topic_subscribe_bracelet[count_for_index] = topic;
 				  topic_subscribe_bracelet_name[count_for_index] = document.getElementById(id_string_bracelet).value;
+				   
+				  var tempName = "name" + (i+1);
+				  console.log("tempName - ",tempName);
+				  var display_text_focus =  document.getElementById(tempName).value;
+				  
+				  
 				  client.subscribe(topic);  
 				  console.log("subscribtion to - ",topic);
 				  
 				  //adding list to the following list select input
 				  follow_list = document.getElementById('trackdevice');
 				  myOption = document.createElement("option");
-				  myOption.text =document.getElementById(id_string_bracelet).value;
+				  //myOption.text =document.getElementById(id_string_bracelet).value;
+				  myOption.text = display_text_focus;
 				  myOption.value = topic;
 				  follow_list.appendChild(myOption);
 				  innerHTML = innerHTML + '<img src="'+icon_list_url[i]+'"  width= "15px;" > - '+document.getElementById(id_string_bracelet).value+'&nbsp;&nbsp;|&nbsp;&nbsp;' ;
@@ -1095,7 +1102,7 @@ function start_topic(){
 			  
 		  }
 		  console.log("innerHTML - ",innerHTML);
-		  document.getElementById("keyofmarker").innerHTML = innerHTML;
+		  document.getElementById("keyofmarker").innerHTML = "";
 	  
 		  setTimeout(function(){
 				polygon1 = new L.polygon([
