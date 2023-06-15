@@ -55,25 +55,25 @@
 				<div style="display:none"> Device <input id="inputTopic" value="ems-00002"></input>  <br></div> 
 				 <div class="form-group"  my-2 >
 						<select id = "bracelet1" onchange = "favTutorial()" >  
-						</select>  <input type="checkbox" id="checkbox1" ><br>
+						</select>  &nbsp; <input type="checkbox" id="checkbox1" > &nbsp; <input type="text" id="name1" > <br>
 						<select id = "bracelet2" onchange = "favTutorial()" >  
-						</select>  <input type="checkbox" id="checkbox2"  ><br>
+						</select>  &nbsp; <input type="checkbox" id="checkbox2"  >&nbsp; <input type="text" id="name2" ><br>
 						<select id = "bracelet3" onchange = "favTutorial()" >  
-						</select>  <input type="checkbox" id="checkbox3"><br>
+						</select>  &nbsp; <input type="checkbox" id="checkbox3">&nbsp; <input type="text" id="name3" ><br>
 						<select id = "bracelet4" onchange = "favTutorial()" >  
-						</select>  <input type="checkbox" id="checkbox4" ><br>
+						</select>  &nbsp; <input type="checkbox" id="checkbox4" >&nbsp; <input type="text" id="name4" ><br>
 						<select id = "bracelet5" onchange = "favTutorial()" >  
-						</select>  <input type="checkbox" id="checkbox5" ><br>
+						</select>  &nbsp; <input type="checkbox" id="checkbox5" >&nbsp; <input type="text" id="name5" ><br>
 						<select id = "bracelet6" onchange = "favTutorial()" >  
-						</select>  <input type="checkbox" id="checkbox6" ><br>
+						</select>  &nbsp; <input type="checkbox" id="checkbox6" >&nbsp; <input type="text" id="name6" ><br>
 						<select id = "bracelet7" onchange = "favTutorial()" >  
-						</select>  <input type="checkbox" id="checkbox7" ><br>
+						</select>  &nbsp; <input type="checkbox" id="checkbox7" >&nbsp; <input type="text" id="name7" ><br>
 						<select id = "bracelet8" onchange = "favTutorial()" >  
-						</select>  <input type="checkbox" id="checkbox8" ><br>
+						</select> &nbsp; <input type="checkbox" id="checkbox8" >&nbsp; <input type="text" id="name8" ><br>
 						<select id = "bracelet9" onchange = "favTutorial()" >  
-						</select>  <input type="checkbox" id="checkbox9" ><br>
+						</select>  &nbsp; <input type="checkbox" id="checkbox9" >&nbsp; <input type="text" id="name9" ><br>
 						<select id = "bracelet10" onchange = "favTutorial()" >  
-						</select>  <input type="checkbox" id="checkbox10" ><br>
+						</select>  &nbsp; <input type="checkbox" id="checkbox10" >&nbsp; <input type="text" id="name10" ><br>
 					  </div>
 					  
 					  	
@@ -296,7 +296,11 @@ var icon1 = L.icon({
 	  popupAnchor: [-3, 0]
 	});
 var marker1 = new L.marker([-90000,-90000], {
-	  icon:icon1}).addTo(map);
+	  icon:icon1}).bindTooltip(" ", 
+			    {
+	        permanent: true, 
+	        direction: 'right'
+	    }).addTo(map);
 var icon2 = L.icon({
 	  iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
 	  iconSize:  [19, 45],
@@ -304,7 +308,11 @@ var icon2 = L.icon({
 	  popupAnchor: [-3, 0]
 	});
 var marker2 = new L.marker([-90000,-90000], {
-	  icon:icon2}).addTo(map);
+	  icon:icon2}).bindTooltip(" ", 
+			    {
+	        permanent: true, 
+	        direction: 'right'
+	    }).addTo(map);
 	  
 	  
 var icon3 = L.icon({
@@ -314,7 +322,11 @@ var icon3 = L.icon({
 	  popupAnchor: [-3, 0]
 });	  
 var marker3 = new L.marker([-90000,-90000], {
-	icon:icon3}).addTo(map);
+	icon:icon3}).bindTooltip(" ", 
+		    {
+        permanent: true, 
+        direction: 'right'
+    }).addTo(map);
 
 	
 	
@@ -326,7 +338,11 @@ var icon4 = L.icon({
 	  popupAnchor: [-3, 0]
 });	  
 var marker4 = new L.marker([-90000,-90000], {
-	icon:icon4}).addTo(map);
+	icon:icon4}).bindTooltip(" ", 
+		    {
+        permanent: true, 
+        direction: 'right'
+    }).addTo(map);
 	
 	
 	
@@ -337,7 +353,11 @@ var icon5 = L.icon({
 	  popupAnchor: [-3, 0]
 });	  
 var marker5 = new L.marker([-90000,-90000], {
-	icon:icon5}).addTo(map);
+	icon:icon5}).bindTooltip(" ", 
+		    {
+        permanent: true, 
+        direction: 'right'
+    }).addTo(map);
 	
 	
 var icon6 = L.icon({
@@ -347,7 +367,11 @@ var icon6 = L.icon({
 	  popupAnchor: [-3, 0]
 });	  
 var marker6 = new L.marker([-90000,-90000], {
-	icon:icon6}).addTo(map);
+	icon:icon6}).bindTooltip(" ", 
+		    {
+        permanent: true, 
+        direction: 'right'
+    }).addTo(map);
 	
 var icon7 = L.icon({
     iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png',
@@ -356,7 +380,11 @@ var icon7 = L.icon({
 	  popupAnchor: [-3, 0]
 });	  
 var marker7 = new L.marker([-90000,-90000], {
-	icon:icon7}).addTo(map);
+	icon:icon7}).bindTooltip(" ", 
+		    {
+        permanent: true, 
+        direction: 'right'
+    }).addTo(map);
 	
 var icon8 = L.icon({
     iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-yellow.png',
@@ -365,7 +393,11 @@ var icon8 = L.icon({
 	  popupAnchor: [-3, 0]
 });	  
 var marker8 = new L.marker([-90000,-90000], {
-	icon:icon8}).addTo(map);
+	icon:icon8}).bindTooltip(" ", 
+		    {
+        permanent: true, 
+        direction: 'right'
+    }).addTo(map);
 	
 var icon9 = L.icon({
     iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-orange.png',
@@ -374,7 +406,11 @@ var icon9 = L.icon({
 	  popupAnchor: [-3, 0]
 });	  
 var marker9 = new L.marker([-90000,-90000], {
-	icon:icon9}).addTo(map);
+	icon:icon9}).bindTooltip(" ", 
+		    {
+        permanent: true, 
+        direction: 'right'
+    }).addTo(map);
 	
 	
 
@@ -385,7 +421,11 @@ var icon10 = L.icon({
 	  popupAnchor: [-3, 0]
 });	  
 var marker10 = new L.marker([-90000,-90000], {
-	icon:icon10}).addTo(map);
+	icon:icon10}).bindTooltip(" ", 
+		    {
+        permanent: true, 
+        direction: 'right'
+    }).addTo(map);
 	
 	
 	
@@ -412,6 +452,7 @@ var pointList10 = [];
    var bracelets = [];
    var got_response = 0;
     fetch("https://dcs-ems.ngei.csir.co.za:7777/services/core/device/id/all")
+    
      .then(response => response.json())
   .then(data => {
 	  console.log('Response: ', data);
@@ -748,6 +789,7 @@ function onMessageArrived(message) {
 										
 									    var newLatLng = new L.LatLng(latValue, longValue);
 									    marker1.setLatLng(newLatLng); 
+									    marker1.setTooltipContent(document.getElementById("name1").value);
 									    if (trackmark){
 									    	map.setView([latValue,longValue]);
 									    }
@@ -766,6 +808,7 @@ function onMessageArrived(message) {
 									
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker2.setLatLng(newLatLng); 
+								    marker2.setTooltipContent(document.getElementById("name2").value);
 								    if (trackmark){
 								    	map.setView([latValue,longValue])}
 								    if (changeTextDisplay){
@@ -783,6 +826,7 @@ function onMessageArrived(message) {
 									
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker3.setLatLng(newLatLng); 
+								    marker3.setTooltipContent(document.getElementById("name3").value);
 								    if (trackmark){
 								    	map.setView([latValue,longValue])}
 								    if (changeTextDisplay){
@@ -799,6 +843,7 @@ function onMessageArrived(message) {
 									
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker4.setLatLng(newLatLng); 
+								    marker4.setTooltipContent(document.getElementById("name4").value);
 								    if (trackmark){
 								    	map.setView([latValue,longValue])}
 								    if (changeTextDisplay){
@@ -815,6 +860,7 @@ function onMessageArrived(message) {
 									
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker5.setLatLng(newLatLng); 
+								    marker5.setTooltipContent(document.getElementById("name5").value);
 								    if (trackmark){
 								    	map.setView([latValue,longValue])
 								    }
@@ -831,6 +877,7 @@ function onMessageArrived(message) {
 									
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker6.setLatLng(newLatLng); 
+								    marker6.setTooltipContent(document.getElementById("name6").value);
 								    if (trackmark){
 								    	map.setView([latValue,longValue])
 								    }
@@ -846,7 +893,8 @@ function onMessageArrived(message) {
 							    	firstpolyline7.addLatLng([latValue, longValue]);
 									
 								    var newLatLng = new L.LatLng(latValue, longValue);
-								    marker7.setLatLng(newLatLng); 
+								    marker7.setLatLng(newLatLng);
+								    marker7.setTooltipContent(document.getElementById("name7").value);
 								    if (trackmark){
 								    	map.setView([latValue,longValue])
 								    }
@@ -863,6 +911,7 @@ function onMessageArrived(message) {
 									
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker8.setLatLng(newLatLng); 
+								    marker8.setTooltipContent(document.getElementById("name8").value);
 								    if (trackmark){
 								    	map.setView([latValue,longValue])
 								    }
@@ -880,6 +929,7 @@ function onMessageArrived(message) {
 									
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker9.setLatLng(newLatLng); 
+								    marker9.setTooltipContent(document.getElementById("name9").value);
 								    if (trackmark){
 								    	map.setView([latValue,longValue])
 								    }
@@ -896,6 +946,7 @@ function onMessageArrived(message) {
 									
 								    var newLatLng = new L.LatLng(latValue, longValue);
 								    marker10.setLatLng(newLatLng); 
+								    marker10.setTooltipContent(document.getElementById("name10").value);
 								    if (trackmark){
 								    	map.setView([latValue,longValue])
 								    }
@@ -967,14 +1018,26 @@ function start_topic(){
 			
 			setTimeout(function(){
 				polygon2 = new L.polygon([
-					[-25.740899,28.275466],
-					[-25.750476,28.273364],
-					[-25.753617,28.273879],
-					[-25.755433,28.274308],
-					[-25.755772,28.281729],
-					[-25.748331,28.284807],
-					[-25.741441,28.282748],
-					[-25.740899,28.275466]
+					[-25.754139,28.276043],
+					[-25.755482,28.276011],
+					[-25.755975,28.27629],
+					[-25.756458,28.277041],
+					[-25.757327,28.277051],
+					[-25.758767,28.277094],
+					[-25.758912,28.278907],
+					[-25.75697,28.282092],
+					[-25.754216,28.281802],
+					[-25.749404,28.283669],
+					[-25.747683,28.284441],
+					[-25.744601,28.282167],
+					[-25.742078,28.282725],
+					[-25.74155,28.282537],
+					[-25.74112,28.278086],
+					[-25.74097,28.276226],
+					[-25.74731,28.275073],
+					[-25.74988,28.274085],
+					[-25.752494,28.2746],
+					[-25.754139,28.276043]
 			],{
 				    color: 'blue',
 				    weight: 3,
@@ -1054,14 +1117,27 @@ function start_topic(){
 			
 			setTimeout(function(){
 				polygon2 = new L.polygon([
-					[-25.740899,28.275466],
-					[-25.750476,28.273364],
-					[-25.753617,28.273879],
-					[-25.755433,28.274308],
-					[-25.755772,28.281729],
-					[-25.748331,28.284807],
-					[-25.741441,28.282748],
-					[-25.740899,28.275466]
+					[-25.754139,28.276043],
+					[-25.755482,28.276011],
+					[-25.755975,28.27629],
+					[-25.756458,28.277041],
+					[-25.757327,28.277051],
+					[-25.758767,28.277094],
+					[-25.758912,28.278907],
+					[-25.75697,28.282092],
+					[-25.754216,28.281802],
+					[-25.749404,28.283669],
+					[-25.747683,28.284441],
+					[-25.744601,28.282167],
+					[-25.742078,28.282725],
+					[-25.74155,28.282537],
+					[-25.74112,28.278086],
+					[-25.74097,28.276226],
+					[-25.74731,28.275073],
+					[-25.74988,28.274085],
+					[-25.752494,28.2746],
+					[-25.754139,28.276043]
+
 			],{
 				    color: 'blue',
 				    weight: 3,
