@@ -710,14 +710,16 @@ function onMessageArrived(message) {
 			    console.log("time: "+object.timestamp);
 			    var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
 			    d.setUTCSeconds((object.timestamp)/1000);
-			    timeDisplay.innerHTML = "Time = "+ d;
+			    displayTheTimeValue = d;
+			    
 			    //console.log( object.metric[1].name +": "+object.metric[1].floatValue);
 			    //console.log( object.metric[2].name +": "+object.metric[2].floatValue);
 				
 				var metric_size = object.metric.length;
 				console.log( "metric_size = " + metric_size );
-				
+				var stringMatricName = "";
 				for (var i =0 ; i<metric_size;i++){
+					stringMatricName = stringMatricName + object.metric[i].name + " \n " 
 					if (object.metric[i].name.includes("lat") ){
 						latValue = object.metric[i].floatValue;
 					}
@@ -725,9 +727,10 @@ function onMessageArrived(message) {
 						longValue = object.metric[i].floatValue;
 					}
 				if (object.metric[i].name.includes("rssi") ){
-					rssi = object.metric[i].floatValue;
+					rssi = object.metric[i].intValue;
 				    }
 				}
+				console.log("stringMatricName: "+stringMatricName);
 				
 				 
 				
@@ -746,6 +749,7 @@ function onMessageArrived(message) {
 									    latv.innerHTML = "Lat = "+ latValue + "";
 									    longv.innerHTML = "Long = "+ longValue + "";
 									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
+									    timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;
 						
 									    
 							  
@@ -798,6 +802,7 @@ function onMessageArrived(message) {
 										    latv.innerHTML = "Lat = "+ latValue + "";
 										    longv.innerHTML = "Long = "+ longValue + "";
 										    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
+										    timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;
 									    }
 									    
 							      
@@ -815,7 +820,8 @@ function onMessageArrived(message) {
 								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[1]+'</b></span>';
 									    latv.innerHTML = "Lat = "+ latValue + "";
 									    longv.innerHTML = "Long = "+ longValue + "";
-									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";    
+									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
+									    timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;
 								    }
 								    
 							      
@@ -834,6 +840,7 @@ function onMessageArrived(message) {
 									    latv.innerHTML = "Lat = "+ latValue + "";
 									    longv.innerHTML = "Long = "+ longValue + "";
 									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
+									    timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;
 									    }
 								      
 								   break;
@@ -851,6 +858,7 @@ function onMessageArrived(message) {
 									    latv.innerHTML = "Lat = "+ latValue + "";
 									    longv.innerHTML = "Long = "+ longValue + "";
 									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
+									    timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;
 									    }
 								      
 								      break;
@@ -868,7 +876,9 @@ function onMessageArrived(message) {
 								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[4]+'</b></span>';
 									    latv.innerHTML = "Lat = "+ latValue + "";
 									    longv.innerHTML = "Long = "+ longValue + "";
-									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";}
+									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
+									    timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;
+									    }
 								      
 								      break;
 								      
@@ -885,7 +895,9 @@ function onMessageArrived(message) {
 								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[5]+'</b></span>';
 									    latv.innerHTML = "Lat = "+ latValue + "";
 									    longv.innerHTML = "Long = "+ longValue + "";
-									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";}
+									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
+									    timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;
+									    }
 								      
 								      break;
 							    case 6:
@@ -902,7 +914,9 @@ function onMessageArrived(message) {
 								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[6]+'</b></span>';
 									    latv.innerHTML = "Lat = "+ latValue + "";
 									    longv.innerHTML = "Long = "+ longValue + "";
-									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";}
+									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
+									    timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;
+									    }
 								      
 								      break;
 							    case 7:
@@ -919,7 +933,9 @@ function onMessageArrived(message) {
 								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[7]+'</b></span>';
 									    latv.innerHTML = "Lat = "+ latValue + "";
 									    longv.innerHTML = "Long = "+ longValue + "";
-									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";}
+									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
+									    timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;    
+								    }
 								      
 								      break;
 								      
@@ -937,7 +953,9 @@ function onMessageArrived(message) {
 								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[8]+'</b></span>';
 									    latv.innerHTML = "Lat = "+ latValue + "";
 									    longv.innerHTML = "Long = "+ longValue + "";
-									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";}
+									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
+									    timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;    
+								    }
 								      
 								      break;
 							    case 9:
@@ -954,7 +972,10 @@ function onMessageArrived(message) {
 								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[9]+'</b></span>';
 									    latv.innerHTML = "Lat = "+ latValue + "";
 									    longv.innerHTML = "Long = "+ longValue + "";
-									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";}
+									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
+									    
+									    timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;
+									   }
 								      
 								      break;
 							    default:
