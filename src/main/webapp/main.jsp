@@ -266,6 +266,7 @@ var zoomsize = 18
 
 
 <script>
+var ranOnceZone = true;
 var icon_list_url = ["https://cdn.jsdelivr.net/gh/pointhi/leaflet-color-markers@master/img/marker-icon-red.png",
 	"https://cdn.jsdelivr.net/gh/pointhi/leaflet-color-markers@master/img/marker-icon-blue.png",
 	"https://cdn.jsdelivr.net/gh/pointhi/leaflet-color-markers@master/img/marker-icon-green.png",
@@ -1014,193 +1015,198 @@ function onMessageArrived(message) {
 function start_topic(){
 	 var innerHTML = "|&nbsp;&nbsp;";
 	 var option1 = document.getElementById("option1");
-	  if (option1.checked) {// for tracking single bracelet
-
-			var topic = "kapua-sys/"+document.getElementById("inputTopic").value+"/data"
-			console.log("topic : "+topic);
-			client.subscribe(topic);
-			setTimeout(function(){
-				polygon1 = new L.polygon([
-					[-25.754018,28.276449],
-					[-25.754187,28.275701],
-					[-25.754388,28.27469],
-					[-25.755202,28.274848],
-					[-25.755644,28.27491],
-					[-25.755482,28.276296],
-					[-25.754018,28.276449]
-			],{
-				    color: 'blue',
-				    weight: 3,
-				    opacity: 0.5,
-				    smoothFactor: 1
-				}).addTo(map);
-			}, 1500); 	
+	
+			  if (option1.checked) {// for tracking single bracelet
 		
-			
-			
-			setTimeout(function(){//csir
-				polygon2 = new L.polygon([
-					[-25.752552,28.277133],
-					[-25.753298,28.277055],
-					[-25.75402,28.277004],
-					[-25.754489,28.276964],
-					[-25.754849,28.27691],
-					[-25.755088,28.276897],
-					[-25.755697,28.276833],
-					[-25.756499,28.276573],
-					[-25.757753,28.275672],
-					[-25.758303,28.275608],
-					[-25.759052,28.277222],
-					[-25.759608,28.278404],
-					[-25.759581,28.279769],
-					[-25.759105,28.280772],
-					[-25.757492,28.2827],
-					[-25.755243,28.285277],
-					[-25.752742,28.282898],
-					[-25.751812,28.278573],
-					[-25.752552,28.277133]
-			],{
-				    color: 'blue',
-				    weight: 3,
-				    opacity: 0.5,
-				    smoothFactor: 1
-				}).addTo(map);
-			}, 2000); 
-			
-			setTimeout(function(){
-				polygon3 = new L.polygon([
-					[ -25.765578,28.273908],
-					[-25.768399,28.273473 ],
-					[-25.778065,28.270363 ],
-					[-25.779152,28.270347 ],
-					[-25.780152,28.273366 ],
-					[-25.765954,28.277163 ],
-					[-25.765578,28.273908 ]
-			],{
-				    color: 'blue',
-				    weight: 3,
-				    opacity: 0.5,
-				    smoothFactor: 1
-				}).addTo(map);
-			}, 2500); 
-			
-			console.log("subscribtion done");
-	  }else{// for multiple bracelets
-		  var count_for_index = 0;
-	  	 
-		  for (var i = 0 ; i <10 ; i++){
-			  var id_string_checkbox = "checkbox"+(i+1);
-			  var id_string_bracelet = "bracelet"+(i+1);
-			  var checkbox_check = document.getElementById(id_string_checkbox);
-			  if (checkbox_check.checked){
+					var topic = "kapua-sys/"+document.getElementById("inputTopic").value+"/data"
+					console.log("topic : "+topic);
+					client.subscribe(topic);
+					 if (ranOnceZone){
+					setTimeout(function(){
+						polygon1 = new L.polygon([
+							[-25.754018,28.276449],
+							[-25.754187,28.275701],
+							[-25.754388,28.27469],
+							[-25.755202,28.274848],
+							[-25.755644,28.27491],
+							[-25.755482,28.276296],
+							[-25.754018,28.276449]
+					],{
+						    color: 'blue',
+						    weight: 3,
+						    opacity: 0.5,
+						    smoothFactor: 1
+						}).addTo(map);
+					}, 1500); 	
+				
+					
+					
+					setTimeout(function(){//csir
+						polygon2 = new L.polygon([
+							[-25.752552,28.277133],
+							[-25.753298,28.277055],
+							[-25.75402,28.277004],
+							[-25.754489,28.276964],
+							[-25.754849,28.27691],
+							[-25.755088,28.276897],
+							[-25.755697,28.276833],
+							[-25.756499,28.276573],
+							[-25.757753,28.275672],
+							[-25.758303,28.275608],
+							[-25.759052,28.277222],
+							[-25.759608,28.278404],
+							[-25.759581,28.279769],
+							[-25.759105,28.280772],
+							[-25.757492,28.2827],
+							[-25.755243,28.285277],
+							[-25.752742,28.282898],
+							[-25.751812,28.278573],
+							[-25.752552,28.277133]
+					],{
+						    color: 'blue',
+						    weight: 3,
+						    opacity: 0.5,
+						    smoothFactor: 1
+						}).addTo(map);
+					}, 2000); 
+					
+					setTimeout(function(){
+						polygon3 = new L.polygon([
+							[ -25.765578,28.273908],
+							[-25.768399,28.273473 ],
+							[-25.778065,28.270363 ],
+							[-25.779152,28.270347 ],
+							[-25.780152,28.273366 ],
+							[-25.765954,28.277163 ],
+							[-25.765578,28.273908 ]
+					],{
+						    color: 'blue',
+						    weight: 3,
+						    opacity: 0.5,
+						    smoothFactor: 1
+						}).addTo(map);
+					}, 2500); 
+				}
+					console.log("subscribtion done");
+			  }else{// for multiple bracelets
+				  var count_for_index = 0;
+			  	 
+				  for (var i = 0 ; i <10 ; i++){
+					  var id_string_checkbox = "checkbox"+(i+1);
+					  var id_string_bracelet = "bracelet"+(i+1);
+					  var checkbox_check = document.getElementById(id_string_checkbox);
+					  if (checkbox_check.checked){
+						  
+						  var topic = "kapua-sys/"+document.getElementById(id_string_bracelet).value+"/data" 
+						  topic_subscribe_index[count_for_index] = i;
+						  topic_subscribe_bracelet[count_for_index] = topic;
+						  topic_subscribe_bracelet_name[count_for_index] = document.getElementById(id_string_bracelet).value;
+						   
+						  var tempName = "name" + (i+1);
+						  console.log("tempName - ",tempName);
+						  var display_text_focus =  document.getElementById(tempName).value;
+						  
+						  
+						  client.subscribe(topic);  
+						  console.log("subscribtion to - ",topic);
+						  
+						  //adding list to the following list select input
+						  follow_list = document.getElementById('trackdevice');
+						  myOption = document.createElement("option");
+						  //myOption.text =document.getElementById(id_string_bracelet).value;
+						  myOption.text = display_text_focus;
+						  myOption.value = topic;
+						  follow_list.appendChild(myOption);
+						  innerHTML = innerHTML + '<img src="'+icon_list_url[i]+'"  width= "15px;" > - '+document.getElementById(id_string_bracelet).value+'&nbsp;&nbsp;|&nbsp;&nbsp;' ;
+						  
+						  
+					  }
+					  count_for_index = count_for_index + 1; 
+					  
+					  
+				  }
+				  console.log("innerHTML - ",innerHTML);
+				  document.getElementById("keyofmarker").innerHTML = "";
+				  if (ranOnceZone){
+				  setTimeout(function(){
+						polygon1 = new L.polygon([
+							[-25.754018,28.276449],
+							[-25.754187,28.275701],
+							[-25.754388,28.27469],
+							[-25.755202,28.274848],
+							[-25.755644,28.27491],
+							[-25.755482,28.276296],
+							[-25.754018,28.276449]
+					],{
+						    color: 'blue',
+						    weight: 3,
+						    opacity: 0.5,
+						    smoothFactor: 1
+						}).addTo(map);
+					}, 1500); 	
+				
+					
+					
+					setTimeout(function(){//csir
+						polygon2 = new L.polygon([
+							[-25.752552,28.277133],
+							[-25.753298,28.277055],
+							[-25.75402,28.277004],
+							[-25.754489,28.276964],
+							[-25.754849,28.27691],
+							[-25.755088,28.276897],
+							[-25.755697,28.276833],
+							[-25.756499,28.276573],
+							[-25.757753,28.275672],
+							[-25.758303,28.275608],
+							[-25.759052,28.277222],
+							[-25.759608,28.278404],
+							[-25.759581,28.279769],
+							[-25.759105,28.280772],
+							[-25.757492,28.2827],
+							[-25.755243,28.285277],
+							[-25.752742,28.282898],
+							[-25.751812,28.278573],
+							[-25.752552,28.277133]
+		
+					],{
+						    color: 'blue',
+						    weight: 3,
+						    opacity: 0.5,
+						    smoothFactor: 1
+						}).addTo(map);
+					}, 2000); 
+					
+					setTimeout(function(){
+						polygon3 = new L.polygon([
+							[ -25.765578,28.273908],
+							[-25.768399,28.273473 ],
+							[-25.778065,28.270363 ],
+							[-25.779152,28.270347 ],
+							[-25.780152,28.273366 ],
+							[-25.765954,28.277163 ],
+							[-25.765578,28.273908 ]
+					],{
+						    color: 'blue',
+						    weight: 3,
+						    opacity: 0.5,
+						    smoothFactor: 1
+						}).addTo(map);
+					}, 2500); 
+					console.log("subscribtion done");
+					  
 				  
-				  var topic = "kapua-sys/"+document.getElementById(id_string_bracelet).value+"/data" 
-				  topic_subscribe_index[count_for_index] = i;
-				  topic_subscribe_bracelet[count_for_index] = topic;
-				  topic_subscribe_bracelet_name[count_for_index] = document.getElementById(id_string_bracelet).value;
-				   
-				  var tempName = "name" + (i+1);
-				  console.log("tempName - ",tempName);
-				  var display_text_focus =  document.getElementById(tempName).value;
 				  
-				  
-				  client.subscribe(topic);  
-				  console.log("subscribtion to - ",topic);
-				  
-				  //adding list to the following list select input
-				  follow_list = document.getElementById('trackdevice');
-				  myOption = document.createElement("option");
-				  //myOption.text =document.getElementById(id_string_bracelet).value;
-				  myOption.text = display_text_focus;
-				  myOption.value = topic;
-				  follow_list.appendChild(myOption);
-				  innerHTML = innerHTML + '<img src="'+icon_list_url[i]+'"  width= "15px;" > - '+document.getElementById(id_string_bracelet).value+'&nbsp;&nbsp;|&nbsp;&nbsp;' ;
-				  
+			  
 				  
 			  }
-			  count_for_index = count_for_index + 1; 
-			  
-			  
-		  }
-		  console.log("innerHTML - ",innerHTML);
-		  document.getElementById("keyofmarker").innerHTML = "";
-	  
-		  setTimeout(function(){
-				polygon1 = new L.polygon([
-					[-25.754018,28.276449],
-					[-25.754187,28.275701],
-					[-25.754388,28.27469],
-					[-25.755202,28.274848],
-					[-25.755644,28.27491],
-					[-25.755482,28.276296],
-					[-25.754018,28.276449]
-			],{
-				    color: 'blue',
-				    weight: 3,
-				    opacity: 0.5,
-				    smoothFactor: 1
-				}).addTo(map);
-			}, 1500); 	
-		
+			  document.getElementById("start_button").classList.toggle("btn-primary");
+			  document.getElementById("start_button").classList.toggle("btn-success");
+			  ranOnceZone = false;
 			
-			
-			setTimeout(function(){//csir
-				polygon2 = new L.polygon([
-					[-25.752552,28.277133],
-					[-25.753298,28.277055],
-					[-25.75402,28.277004],
-					[-25.754489,28.276964],
-					[-25.754849,28.27691],
-					[-25.755088,28.276897],
-					[-25.755697,28.276833],
-					[-25.756499,28.276573],
-					[-25.757753,28.275672],
-					[-25.758303,28.275608],
-					[-25.759052,28.277222],
-					[-25.759608,28.278404],
-					[-25.759581,28.279769],
-					[-25.759105,28.280772],
-					[-25.757492,28.2827],
-					[-25.755243,28.285277],
-					[-25.752742,28.282898],
-					[-25.751812,28.278573],
-					[-25.752552,28.277133]
-
-			],{
-				    color: 'blue',
-				    weight: 3,
-				    opacity: 0.5,
-				    smoothFactor: 1
-				}).addTo(map);
-			}, 2000); 
-			
-			setTimeout(function(){
-				polygon3 = new L.polygon([
-					[ -25.765578,28.273908],
-					[-25.768399,28.273473 ],
-					[-25.778065,28.270363 ],
-					[-25.779152,28.270347 ],
-					[-25.780152,28.273366 ],
-					[-25.765954,28.277163 ],
-					[-25.765578,28.273908 ]
-			],{
-				    color: 'blue',
-				    weight: 3,
-				    opacity: 0.5,
-				    smoothFactor: 1
-				}).addTo(map);
-			}, 2500); 
-			console.log("subscribtion done");
-			  
-		  
-		  
-	  
-		  
-	  }
-	  document.getElementById("start_button").classList.toggle("btn-primary");
-	  document.getElementById("start_button").classList.toggle("btn-success");
-	
+		}
 }
+
 
 
 </script>

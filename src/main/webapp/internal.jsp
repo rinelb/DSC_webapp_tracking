@@ -74,8 +74,30 @@
 						</select>  &nbsp; <input type="checkbox" id="checkbox9" >&nbsp; <input type="text" id="name9" value="Mbappe Kylian">&nbsp;<img id="status9"/><br>
 						<select id = "bracelet10" onchange = "favTutorial()" >  
 						</select>  &nbsp; <input type="checkbox" id="checkbox10" >&nbsp; <input type="text" id="name10" value="Drogba Didier">&nbsp;<img id="status10"/><br><br>
-						<img src="img/green.png"/> less than <input type="number" id="numberGreen" value=60000> millsec <br> <img src="img/yellow.png"/> less than <input type="number" id="numberYellow" value=300000> millsec <br> 
-						<img src="img/red.png"/> for longer  <br>   <img src="img/grey.png"/> means no message was received yet
+						<button type="button" class="btn btn-primary" id="hideSettingGui" onclick="Hide_setting()">Show Setting</button>
+						<div id="setting" style="display:none"> 
+							Active Time 
+							<img src="img/green.png"/> less than <input type="number" id="numberGreen" value=60000> millsec <br> <img src="img/yellow.png"/> less than <input type="number" id="numberYellow" value=300000> millsec <br> 
+							<img src="img/red.png"/> for longer  <br>   <img src="img/grey.png"/> means no message was received yet
+							<hr>
+							Battery  
+							<img src="img/green.png"/> great than <input type="number" id="batteryg" value=4.0 step="0.01"> volts <br> <img src="img/yellow.png"/> greater than <input type="number" id="batteryy" value=3.5 step="0.01"> volts <br> 
+							<img src="img/red.png"/> for lower  <br>  
+							<hr>
+							RSSI  
+							<img src="img/green.png"/> higher than <input type="float" id="rssig" value=-90> db <br> <img src="img/yellow.png"/> higher than <input type="float" id="rssiy" value=-100 > db <br> 
+							<img src="img/red.png"/> for lower  <br>  
+							<hr>  
+							<img src="img/green.png"/> No tamper  |  <img src="img/red.png"/> tamper detected  <br>  
+							<hr>
+							Temp  
+							<img src="img/green.png"/> lower than <input type="number" id="tempg" value=30.0 step="0.01"> Deg C <br> <img src="img/yellow.png"/> lower than <input type="number" id="tempy" value=50.0 step="0.01" > Deg C <br> 
+							<img src="img/red.png"/> for higher  <br>  
+							<hr>
+							speed  
+							<img src="img/red.png"/> faster than <input type="float" id="speedr" value=10> meter/s <br> <img src="img/yellow.png"/> higher than <input type="float" id="speedy" value=5 > m/s <br> 
+							<img src="img/green.png"/> for slower  <br>  
+					  	</div>
 					  </div>
 					  
 					  	
@@ -88,10 +110,123 @@
 		<td>
 			<center>
 			<div style="padding-top:5px;"  my-2>
-						<p id="bracelet_lat_long"></p>
+				<p id="bracelet_lat_long"></p>
 				<p id="lat"></p>
 				<p id="long">
 				<p id="time"></p><p id="rssi"></p></p>
+				<table id="table">
+					<thead style="bold;">
+						<td>Device</td>
+						<td>Time</td>
+						<td>RSSI</td>
+						<td>Battery</td>
+						<td>Temp</td>
+						<td>Tamper</td>
+						<td>Speed</td>
+						
+					</thead>
+					<tr>
+						<td id="r1d1"></td>
+						<td id="r1d2"></td>
+						<td id="r1d3"></td>
+						<td id="r1d4"></td>
+						<td id="r1d5"></td>
+						<td id="r1d6"></td>
+						<td id="r1d7"></td>
+						
+					</tr>
+					
+					<tr>
+						<td id="r2d1"></td>
+						<td id="r2d2"></td>
+						<td id="r2d3"></td>
+						<td id="r2d4"></td>
+						<td id="r2d5"></td>
+						<td id="r2d6"></td>
+						<td id="r2d7"></td>
+						
+					</tr>
+					<tr>
+						<td id="r3d1"></td>
+						<td id="r3d2"></td>
+						<td id="r3d3"></td>
+						<td id="r3d4"></td>
+						<td id="r3d5"></td>
+						<td id="r3d6"></td>
+						<td id="r3d7"></td>
+						
+					</tr>
+					<tr>
+						<td id="r4d1"></td>
+						<td id="r4d2"></td>
+						<td id="r4d3"></td>
+						<td id="r4d4"></td>
+						<td id="r4d5"></td>
+						<td id="r4d6"></td>
+						<td id="r4d7"></td>
+						
+					</tr>
+					<tr>
+						<td id="r5d1"></td>
+						<td id="r5d2"></td>
+						<td id="r5d3"></td>
+						<td id="r5d4"></td>
+						<td id="r5d5"></td>
+						<td id="r5d6"></td>
+						<td id="r5d7"></td>
+						
+					</tr>
+					<tr>
+						<td id="r6d1"></td>
+						<td id="r6d2"></td>
+						<td id="r6d3"></td>
+						<td id="r6d4"></td>
+						<td id="r6d5"></td>
+						<td id="r6d6"></td>
+						<td id="r6d7"></td>
+						
+					</tr>
+					<tr>
+						<td id="r7d1"></td>
+						<td id="r7d2"></td>
+						<td id="r7d3"></td>
+						<td id="r7d4"></td>
+						<td id="r7d5"></td>
+						<td id="r7d6"></td>
+						<td id="r7d7"></td>
+					
+					</tr>
+					<tr>
+						<td id="r8d1"></td>
+						<td id="r8d2"></td>
+						<td id="r8d3"></td>
+						<td id="r8d4"></td>
+						<td id="r8d5"></td>
+						<td id="r8d6"></td>
+						<td id="r8d7"></td>
+						
+					</tr>
+					<tr>
+						<td id="r9d1"></td>
+						<td id="r9d2"></td>
+						<td id="r9d3"></td>
+						<td id="r9d4"></td>
+						<td id="r9d5"></td>
+						<td id="r9d6"></td>
+						<td id="r9d7"></td>
+						
+					</tr>
+					<tr>
+						<td id="r10d1"></td>
+						<td id="r10d2"></td>
+						<td id="r10d3"></td>
+						<td id="r10d4"></td>
+						<td id="r10d5"></td>
+						<td id="r10d6"></td>
+						<td id="r10d7"></td>
+						
+					</tr>
+				</table>
 				
 				</div>
 				
@@ -139,6 +274,18 @@ function Hide() {
 	}else{
 		document.getElementById("hideGui").innerHTML = "Show Devices";
 		document.getElementById("bracelet_list").style.display = "none";
+	}
+  }
+  
+Hide_setting
+
+function Hide_setting() {  
+	if (document.getElementById("hideSettingGui").innerHTML === "Hide Setting"){
+		document.getElementById("hideSettingGui").innerHTML = "Show Setting"
+		document.getElementById("setting").style.display = "none";
+	}else{
+		document.getElementById("hideSettingGui").innerHTML = "Hide Setting";
+		document.getElementById("setting").style.display = "block";
 	}
   }
 </script> 
@@ -278,6 +425,8 @@ var zoomsize = 18
 
 <script>
 
+var ranOnceZone = true;
+
 var time1b=0;
 var time2b=0;
 var time3b=0;
@@ -288,6 +437,9 @@ var time7b=0;
 var time8b=0;
 var time9b=0;
 var time10b=0;
+var greenColor = "#B1F77B";
+var yellowColor ="#FFFD5E";
+var redColor ="#FF8383";
 
 
 
@@ -298,7 +450,10 @@ function statusCheck () {
     console.log("currentTime " ,  currentTime); 
     var intervalGreen = document.getElementById("numberGreen").value;
     var intervalYellow =  document.getElementById("numberYellow").value;
-    
+    var rssiGreen = parseFloat(document.getElementById("rssig").value).toFixed(2);
+    var rssiYellow =  parseFloat(document.getElementById("rssiy").value).toFixed(2);
+    var batteryGreen = document.getElementById("batteryg").value;
+    var batteryYellow =  document.getElementById("batteryy").value;
     for (var i = 0;i<10;i++){
     		var indexString = "checkbox" + (i+1);
     		var indexImag = "status"+(i+1);
@@ -307,7 +462,7 @@ function statusCheck () {
 		    	
 				  switch (i){
 				  		case 0:
-				  			var tempCompareTime =  (currentTime - (7*60*1000))  - (time1b  );
+				  			var tempCompareTime =  (currentTime )  - (time1b  );
 				  			console.log("tempCompareTime ", tempCompareTime,"  currentTime " ,  currentTime,"  time1b ",time1b , );
 				  			if (time1b==0){
 				  				document.getElementById(indexImag).src = "img/grey.png";
@@ -330,7 +485,7 @@ function statusCheck () {
 				  			break;
 				  			
 						case 1:
-				  			var tempCompareTime =  (currentTime - (7*60*1000))  - (time2b  );
+				  			var tempCompareTime =  (currentTime )  - (time2b  );
 				  			console.log("tempCompareTime ", tempCompareTime,"  currentTime " ,  currentTime,"  time2b ",time2b , );
 				  			if (time2b==0){
 				  				document.getElementById(indexImag).src = "img/grey.png";
@@ -352,7 +507,7 @@ function statusCheck () {
 				  			 
 				  			break;
 						case 2:
-				  			var tempCompareTime =  (currentTime - (7*60*1000))  - (time3b  );
+				  			var tempCompareTime =  (currentTime )  - (time3b  );
 				  			console.log("tempCompareTime ", tempCompareTime,"  currentTime " ,  currentTime,"  time3b ",time3b , );
 				  			if (time3b==0){
 				  				document.getElementById(indexImag).src = "img/grey.png";
@@ -374,7 +529,7 @@ function statusCheck () {
 				  			 
 				  			break;
 						case 3:
-				  			var tempCompareTime =  (currentTime - (7*60*1000))  - (time4b  );
+				  			var tempCompareTime =  (currentTime )  - (time4b  );
 				  			console.log("tempCompareTime ", tempCompareTime,"  currentTime " ,  currentTime,"  time4b ",time4b , );
 				  			if (time4b==0){
 				  				document.getElementById(indexImag).src = "img/grey.png";
@@ -396,7 +551,7 @@ function statusCheck () {
 				  			 
 				  			break;
 						case 4:
-				  			var tempCompareTime =  (currentTime - (7*60*1000))  - (time5b  );
+				  			var tempCompareTime =  (currentTime )  - (time5b  );
 				  			console.log("tempCompareTime ", tempCompareTime,"  currentTime " ,  currentTime,"  time5b ",time5b , );
 				  			if (time5b==0){
 				  				document.getElementById(indexImag).src = "img/grey.png";
@@ -418,7 +573,7 @@ function statusCheck () {
 				  			 
 				  			break;
 						case 5:
-				  			var tempCompareTime =  (currentTime - (7*60*1000))  - (time6b  );
+				  			var tempCompareTime =  (currentTime )  - (time6b  );
 				  			console.log("tempCompareTime ", tempCompareTime,"  currentTime " ,  currentTime,"  time7b ",time6b , );
 				  			if (time6b==0){
 				  				document.getElementById(indexImag).src = "img/grey.png";
@@ -441,7 +596,7 @@ function statusCheck () {
 				  			break;
 				  			
 						case 6:
-				  			var tempCompareTime =  (currentTime - (7*60*1000))  - (time7b  );
+				  			var tempCompareTime =  (currentTime )  - (time7b  );
 				  			console.log("tempCompareTime ", tempCompareTime,"  currentTime " ,  currentTime,"  time7b ",time7b , );
 				  			if (time7b==0){
 				  				document.getElementById(indexImag).src = "img/grey.png";
@@ -464,7 +619,7 @@ function statusCheck () {
 				  			break;
 				  			
 						case 7:
-				  			var tempCompareTime =  (currentTime - (7*60*1000))  - (time8b  );
+				  			var tempCompareTime =  (currentTime )  - (time8b  );
 				  			console.log("tempCompareTime ", tempCompareTime,"  currentTime " ,  currentTime,"  time8b ",time8b , );
 				  			if (time8b==0){
 				  				document.getElementById(indexImag).src = "img/grey.png";
@@ -487,7 +642,7 @@ function statusCheck () {
 				  			break;
 				  			
 						case 8:
-				  			var tempCompareTime =  (currentTime - (7*60*1000))  - (time9b  );
+				  			var tempCompareTime =  (currentTime )  - (time9b  );
 				  			console.log("tempCompareTime ", tempCompareTime,"  currentTime " ,  currentTime,"  time1b ",time9b , );
 				  			if (time9b==0){
 				  				document.getElementById(indexImag).src = "img/grey.png";
@@ -510,7 +665,7 @@ function statusCheck () {
 				  			break;
 				  			
 						case 9:
-				  			var tempCompareTime =  (currentTime - (7*60*1000))  - (time10b  );
+				  			var tempCompareTime =  (currentTime )  - (time10b  );
 				  			console.log("tempCompareTime ", tempCompareTime,"  currentTime " ,  currentTime,"  time10b ",time10b , );
 				  			if (time10b==0){
 				  				document.getElementById(indexImag).src = "img/grey.png";
@@ -886,7 +1041,7 @@ var latv = document.getElementById("lat");
 var longv = document.getElementById("long"); 
 var timeDisplay = document.getElementById("time"); 
 var rssiDisplay = document.getElementById("rssi"); 
-latv.innerHTML = "waiting for coordinates"; 
+//latv.innerHTML = "waiting for coordinates"; 
 // Create a client instance
 // client = new Paho.MQTT.Client("broker.hivemq.com", Number(8000), "clientIdWebAppTest");
 var clientIdWebApp = "clientIdWebAppTest"+ Math.floor(Math.random() * 10000);  
@@ -920,6 +1075,18 @@ function onConnectionLost(responseObject) {
 
 // called when a message arrives
 function onMessageArrived(message) {
+	
+	 var intervalGreen = document.getElementById("numberGreen").value;
+	    var intervalYellow =  document.getElementById("numberYellow").value;
+	    var rssiGreen = document.getElementById("rssig").value;
+	    var rssiYellow =  document.getElementById("rssiy").value;
+	    var batteryGreen = document.getElementById("batteryg").value;
+	    var batteryYellow =  document.getElementById("batteryy").value;
+	    var speedRed = document.getElementById("speedr").value;
+	    var speedYellow = document.getElementById("speedy").value;
+	    var temperatureGreen = document.getElementById("tempg").value;
+	    var temperatureYellow = document.getElementById("tempy").value;
+	    
  			  console.log("onMessageArrived:")
  			  console.log(message);
  			  
@@ -927,6 +1094,10 @@ function onMessageArrived(message) {
  			  var latValue;
 			  var longValue;
 			  var rssi;	
+			  var battery;
+			  var tamper;
+			  var temperature;
+			  var speed;
 			  var changeTextDisplay = false;
  			  var payload1 = message.payloadBytes
 			  var length = payload1.length;
@@ -1009,10 +1180,31 @@ function onMessageArrived(message) {
 						longValue = object.metric[i].floatValue;
 					}
 				if (object.metric[i].name.includes("rssi") ){
-					rssi = object.metric[i].intValue;
+					rssi = object.metric[i].floatValue;
 				    }
+				if (object.metric[i].name.includes("rssi") ){
+					battery = object.metric[i].floatValue;
+				    }
+				if (object.metric[i].name.includes("temperature") ){
+					temperature = object.metric[i].floatValue;
+					console.log("temperature: "+temperature);
+				    }
+				if (object.metric[i].name.includes("speed") ){
+					speed = object.metric[i].doubleValue;
+					console.log("speed: "+speed);
+				    }
+				if (object.metric[i].name.includes("tamper") ){
+					tamper = object.metric[i].boolValue;
+					console.log("tamper: "+tamper);
+				    }
+				
+				temperature
 				}
 				console.log("stringMatricName: "+stringMatricName);
+				
+				
+				
+				
 				
 				 
 				
@@ -1028,10 +1220,7 @@ function onMessageArrived(message) {
 									    if (document.getElementById("checkBoxFoll").checked == true){
 									    	map.setView([latValue,longValue])
 									    }
-									    latv.innerHTML = "Lat = "+ latValue + "";
-									    longv.innerHTML = "Long = "+ longValue + "";
-									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
-									    timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;
+									    
 						
 									    
 							  
@@ -1065,7 +1254,108 @@ function onMessageArrived(message) {
 					  
 					  switch (index_recieved) {
 					    case 0:
+					    	
+					    	document.getElementById("r1d1").innerHTML = "<b>"+ document.getElementById("name1").value +"</b>"+ " - " + topic_subscribe_bracelet_name[0];
+					    	
 					    	time1b = timestampRecord;
+					    	currentTime = new Date().getTime();
+					    	var tempCompareTime =  (currentTime )  - (time1b  );
+					    	var dt1 = new Date(0);
+					    	dt1.setUTCSeconds((object.timestamp)/1000);
+					    	var hrs = dt1.getHours();
+					    	var mins = dt1.getMinutes();
+					    	var hhmm = (hrs < 10 ? "0" + hrs : hrs) + ":" + (mins < 10 ? "0" + mins : mins);
+				  			console.log("tempCompareTime ", tempCompareTime,"  currentTime " ,  currentTime,"  time1b ",time1b , );
+				  			if (time1b==0){
+				  				document.getElementById("r1d2").innerHTML = "-";
+				  			}else
+				  			if (tempCompareTime < intervalGreen){
+				  				document.getElementById("r1d2").style.backgroundColor = greenColor;
+				  				
+				  				var displayThisTime = hhmm;
+				  				document.getElementById("r1d2").innerHTML = displayThisTime;
+				  				console.log("GREEEEEEEN ");
+				  			}else if(tempCompareTime < intervalYellow){
+				  				document.getElementById("r1d2").style.backgroundColor = yellowColor;
+				  				console.log("YELLLLOOOOWWW ");
+				  				var dt1 = new Date((time1b)/1000); // The 0 there is the key, which sets the date to the epoch
+				  				
+				  				var displayThisTime = hhmm;
+				  				document.getElementById("r1d2").innerHTML = displayThisTime;
+
+				  				
+				  			}else{
+				  				document.getElementById("r1d2").style.backgroundColor = redColor;
+				  				console.log(dt1);
+				  				
+				  				var displayThisTime = hhmm;
+				  				document.getElementById("r1d2").innerHTML = displayThisTime;
+				  					
+				  			}
+				  			document.getElementById("r1d3").innerHTML = rssi;
+				  			console.log("rssi ", rssi,"  rssiGreen " ,  rssiGreen);
+				  			
+				  			if (rssi > rssiGreen)
+				  				{
+				  				document.getElementById("r1d3").style.backgroundColor = greenColor;
+				  				}else if (rssi >= rssiYellow)
+				  					{	
+				  						document.getElementById("r1d3").style.backgroundColor = yellowColor;
+				  					
+				  					}else{
+				  						document.getElementById("r1d3").style.backgroundColor = redColor;
+				  					}
+				  			
+				  			document.getElementById("r1d4").innerHTML = rssi;
+				  			if (battery > batteryGreen)
+				  				{
+				  				document.getElementById("r1d4").style.backgroundColor = greenColor;
+				  				}else if (battery >= batteryYellow)
+				  					{	
+				  						document.getElementById("r1d4").style.backgroundColor = yellowColor;
+				  					
+				  					}else{
+				  						document.getElementById("r1d4").style.backgroundColor = redColor;
+				  					}
+				  			
+				  			document.getElementById("r1d5").innerHTML = temperature;
+				  			console.log("temperature ", temperature,"  temperatureGreen " ,  temperatureGreen);
+				  			if (temperature < (temperatureGreen))
+				  				{
+				  				document.getElementById("r1d5").style.backgroundColor = greenColor;
+				  				}else if (temperature < temperatureYellow)
+				  				{	
+				  						document.getElementById("r1d5").style.backgroundColor = yellowColor;
+				  					
+				  				}else{
+				  						document.getElementById("r1d5").style.backgroundColor = redColor;
+				  				}
+				  			
+				  			document.getElementById("r1d6").innerHTML = tamper;
+				  			if (tamper)
+				  				{
+				  				document.getElementById("r1d6").style.backgroundColor = redColor;
+				  				
+				  				}else{
+				  						document.getElementById("r1d6").style.backgroundColor = greenColor;
+				  				}
+				  			
+				  			document.getElementById("r1d7").innerHTML = speed;
+				  			if (speed > speedRed)
+				  				{
+				  				document.getElementById("r1d7").style.backgroundColor = redColor;
+				  				}else if (speed > speedYellow)
+				  				{	
+				  						document.getElementById("r1d7").style.backgroundColor = yellowColor;
+				  					
+				  				}else{
+				  						document.getElementById("r1d7").style.backgroundColor = greenColor;
+				  				}
+					    	
+				  			
+				  			
+					    	
+					    	
 					    	break;
 					    case 1:
 					    	time2b = timestampRecord;
@@ -1105,6 +1395,7 @@ function onMessageArrived(message) {
 						  console.log("Undefined Error on Lat and Long");
 						  }else{
 							  console.log("Valid Lat and Long values");
+							  var tempindex_recieved = 11
 							   switch (index_recieved) {
 							    case 0:
 							    	
@@ -1117,11 +1408,11 @@ function onMessageArrived(message) {
 									    	map.setView([latValue,longValue]);
 									    }
 									    if (changeTextDisplay){
-										    document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[0]+'</b></span>';
-										    latv.innerHTML = "Lat = "+ latValue + "";
-										    longv.innerHTML = "Long = "+ longValue + "";
-										    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
-										    timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;
+										    //document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[0]+'</b></span>';
+										    //latv.innerHTML = "Lat = "+ latValue + "";
+										    //longv.innerHTML = "Long = "+ longValue + "";
+										    //rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
+										    //timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;
 										    //time1b = timestampRecord;
 										    console.log("timestampRecord ",timestampRecord);
 									    }
@@ -1138,11 +1429,11 @@ function onMessageArrived(message) {
 								    if (trackmark){
 								    	map.setView([latValue,longValue])}
 								    if (changeTextDisplay){
-								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[1]+'</b></span>';
-									    latv.innerHTML = "Lat = "+ latValue + "";
-									    longv.innerHTML = "Long = "+ longValue + "";
-									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
-									    timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;
+								    	//document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[1]+'</b></span>';
+									    //latv.innerHTML = "Lat = "+ latValue + "";
+									    //longv.innerHTML = "Long = "+ longValue + "";
+									    //rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
+									    //timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;
 									   // time2b = timestampRecord;
 								    }
 								    
@@ -1158,11 +1449,11 @@ function onMessageArrived(message) {
 								    if (trackmark){
 								    	map.setView([latValue,longValue])}
 								    if (changeTextDisplay){
-								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[2]+'</b></span>';
-									    latv.innerHTML = "Lat = "+ latValue + "";
-									    longv.innerHTML = "Long = "+ longValue + "";
-									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
-									    timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;
+								    	//document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[2]+'</b></span>';
+									    //latv.innerHTML = "Lat = "+ latValue + "";
+									    //longv.innerHTML = "Long = "+ longValue + "";
+									    //rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
+									    //timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;
 									   // time3b = timestampRecord;
 									    }
 								      
@@ -1177,11 +1468,11 @@ function onMessageArrived(message) {
 								    if (trackmark){
 								    	map.setView([latValue,longValue])}
 								    if (changeTextDisplay){
-								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[3]+'</b></span>';
-									    latv.innerHTML = "Lat = "+ latValue + "";
-									    longv.innerHTML = "Long = "+ longValue + "";
-									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
-									    timeDisplay.innerHTML = "Time = "+ displayTheTimeValue
+								    	//document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[3]+'</b></span>';
+									    //latv.innerHTML = "Lat = "+ latValue + "";
+									    //longv.innerHTML = "Long = "+ longValue + "";
+									    //rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
+									    //timeDisplay.innerHTML = "Time = "+ displayTheTimeValue
 									   // time4b = timestampRecord;
 									    }
 								      
@@ -1197,11 +1488,11 @@ function onMessageArrived(message) {
 								    	map.setView([latValue,longValue])
 								    }
 								    if (changeTextDisplay){
-								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[4]+'</b></span>';
-									    latv.innerHTML = "Lat = "+ latValue + "";
-									    longv.innerHTML = "Long = "+ longValue + "";
-									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
-									    timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;
+								    	//document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[4]+'</b></span>';
+									    //latv.innerHTML = "Lat = "+ latValue + "";
+									    //longv.innerHTML = "Long = "+ longValue + "";
+									    //rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
+									    //timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;
 									   // time5b = timestampRecord;
 									    }
 								      
@@ -1217,11 +1508,11 @@ function onMessageArrived(message) {
 								    	map.setView([latValue,longValue])
 								    }
 								    if (changeTextDisplay){
-								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[5]+'</b></span>';
-									    latv.innerHTML = "Lat = "+ latValue + "";
-									    longv.innerHTML = "Long = "+ longValue + "";
-									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
-									    timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;
+								    	//document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[5]+'</b></span>';
+									    //latv.innerHTML = "Lat = "+ latValue + "";
+									    //longv.innerHTML = "Long = "+ longValue + "";
+									    //rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
+									    //timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;
 									//time6b = timestampRecord;
 									    }
 								      
@@ -1237,11 +1528,11 @@ function onMessageArrived(message) {
 								    	map.setView([latValue,longValue])
 								    }
 								    if (changeTextDisplay){
-								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[6]+'</b></span>';
-									    latv.innerHTML = "Lat = "+ latValue + "";
-									    longv.innerHTML = "Long = "+ longValue + "";
-									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
-									    timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;
+								    	//document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[6]+'</b></span>';
+									    //latv.innerHTML = "Lat = "+ latValue + "";
+									    //longv.innerHTML = "Long = "+ longValue + "";
+									    //rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
+									    //timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;
 									  //  time7b = timestampRecord;
 									    }
 								      
@@ -1257,11 +1548,11 @@ function onMessageArrived(message) {
 								    	map.setView([latValue,longValue])
 								    }
 								    if (changeTextDisplay){
-								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[7]+'</b></span>';
-									    latv.innerHTML = "Lat = "+ latValue + "";
-									    longv.innerHTML = "Long = "+ longValue + "";
-									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
-									    timeDisplay.innerHTML = "Time = "+ displayTheTimeValue; 
+								    	//document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[7]+'</b></span>';
+									    //latv.innerHTML = "Lat = "+ latValue + "";
+									    //longv.innerHTML = "Long = "+ longValue + "";
+									    //rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
+									    //timeDisplay.innerHTML = "Time = "+ displayTheTimeValue; 
 									//    time8b = timestampRecord;
 								    }
 								      
@@ -1278,11 +1569,11 @@ function onMessageArrived(message) {
 								    	map.setView([latValue,longValue])
 								    }
 								    if (changeTextDisplay){
-								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[8]+'</b></span>';
-									    latv.innerHTML = "Lat = "+ latValue + "";
-									    longv.innerHTML = "Long = "+ longValue + "";
-									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
-									    timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;    
+								    	//document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[8]+'</b></span>';
+									    //latv.innerHTML = "Lat = "+ latValue + "";
+									    //longv.innerHTML = "Long = "+ longValue + "";
+									    //rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
+									    //timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;    
 									 //   time9b = timestampRecord;
 								    }
 								      
@@ -1298,12 +1589,12 @@ function onMessageArrived(message) {
 								    	map.setView([latValue,longValue])
 								    }
 								    if (changeTextDisplay){
-								    	document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[9]+'</b></span>';
-									    latv.innerHTML = "Lat = "+ latValue + "";
-									    longv.innerHTML = "Long = "+ longValue + "";
-									    rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
+								    	//document.getElementById("bracelet_lat_long").innerHTML = '<span style="font-size: 36px;"><b>'+topic_subscribe_bracelet_name[9]+'</b></span>';
+									    //latv.innerHTML = "Lat = "+ latValue + "";
+									    //longv.innerHTML = "Long = "+ longValue + "";
+									    //rssiDisplay.innerHTML = "RSSI = "+ rssi + "";
 									    
-									    timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;
+									    //timeDisplay.innerHTML = "Time = "+ displayTheTimeValue;
 									 //   time10b = timestampRecord;
 									   }
 								      
@@ -1345,189 +1636,192 @@ function start_topic(){
 	 var innerHTML = "|&nbsp;&nbsp;";
 	 var option1 = document.getElementById("option1");
 	 var interval = setInterval(function () { statusCheck(); }, 10000);
-	  if (option1.checked) {// for tracking single bracelet
-
-			var topic = "kapua-sys/"+document.getElementById("inputTopic").value+"/data"
-			console.log("topic : "+topic);
-			client.subscribe(topic);
-			setTimeout(function(){
-				polygon1 = new L.polygon([
-					[-25.754018,28.276449],
-					[-25.754187,28.275701],
-					[-25.754388,28.27469],
-					[-25.755202,28.274848],
-					[-25.755644,28.27491],
-					[-25.755482,28.276296],
-					[-25.754018,28.276449]
-			],{
-				    color: 'blue',
-				    weight: 3,
-				    opacity: 0.5,
-				    smoothFactor: 1
-				}).addTo(map);
-			}, 1500); 	
-		
+	 
+				  if (option1.checked) {// for tracking single bracelet
 			
+						var topic = "kapua-sys/"+document.getElementById("inputTopic").value+"/data"
+						console.log("topic : "+topic);
+						client.subscribe(topic);
+						 if (ranOnceZone){
+						setTimeout(function(){
+							polygon1 = new L.polygon([
+								[-25.754018,28.276449],
+								[-25.754187,28.275701],
+								[-25.754388,28.27469],
+								[-25.755202,28.274848],
+								[-25.755644,28.27491],
+								[-25.755482,28.276296],
+								[-25.754018,28.276449]
+						],{
+							    color: 'blue',
+							    weight: 3,
+							    opacity: 0.5,
+							    smoothFactor: 1
+							}).addTo(map);
+						}, 1500); 	
+					
+						
+						
+						setTimeout(function(){//csir
+							polygon2 = new L.polygon([
+								[-25.752552,28.277133],
+								[-25.753298,28.277055],
+								[-25.75402,28.277004],
+								[-25.754489,28.276964],
+								[-25.754849,28.27691],
+								[-25.755088,28.276897],
+								[-25.755697,28.276833],
+								[-25.756499,28.276573],
+								[-25.757753,28.275672],
+								[-25.758303,28.275608],
+								[-25.759052,28.277222],
+								[-25.759608,28.278404],
+								[-25.759581,28.279769],
+								[-25.759105,28.280772],
+								[-25.757492,28.2827],
+								[-25.755243,28.285277],
+								[-25.752742,28.282898],
+								[-25.751812,28.278573],
+								[-25.752552,28.277133]
+						],{
+							    color: 'blue',
+							    weight: 3,
+							    opacity: 0.5,
+							    smoothFactor: 1
+							}).addTo(map);
+						}, 2000); 
+						
+						setTimeout(function(){
+							polygon3 = new L.polygon([
+								[ -25.765578,28.273908],
+								[-25.768399,28.273473 ],
+								[-25.778065,28.270363 ],
+								[-25.779152,28.270347 ],
+								[-25.780152,28.273366 ],
+								[-25.765954,28.277163 ],
+								[-25.765578,28.273908 ]
+						],{
+							    color: 'blue',
+							    weight: 3,
+							    opacity: 0.5,
+							    smoothFactor: 1
+							}).addTo(map);
+						}, 2500); 
+				  }
+						console.log("subscribtion done");
+				  }else{// for multiple bracelets
+					  var count_for_index = 0;
+				  	 
+					  for (var i = 0 ; i <10 ; i++){
+						  var id_string_checkbox = "checkbox"+(i+1);
+						  var id_string_bracelet = "bracelet"+(i+1);
+						  var checkbox_check = document.getElementById(id_string_checkbox);
+						  if (checkbox_check.checked){
+							  
+							  var topic = "kapua-sys/"+document.getElementById(id_string_bracelet).value+"/data" 
+							  topic_subscribe_index[count_for_index] = i;
+							  topic_subscribe_bracelet[count_for_index] = topic;
+							  topic_subscribe_bracelet_name[count_for_index] = document.getElementById(id_string_bracelet).value;
+							   
+							  var tempName = "name" + (i+1);
+							  console.log("tempName - ",tempName);
+							  var display_text_focus =  document.getElementById(tempName).value;
+							  
+							  
+							  client.subscribe(topic);  
+							  console.log("subscribtion to - ",topic);
+							  
+							  //adding list to the following list select input
+							  follow_list = document.getElementById('trackdevice');
+							  myOption = document.createElement("option");
+							  //myOption.text =document.getElementById(id_string_bracelet).value;
+							  myOption.text = display_text_focus;
+							  myOption.value = topic;
+							  follow_list.appendChild(myOption);
+							  innerHTML = innerHTML + '<img src="'+icon_list_url[i]+'"  width= "15px;" > - '+document.getElementById(id_string_bracelet).value+'&nbsp;&nbsp;|&nbsp;&nbsp;' ;
+							  
+							  
+						  }
+						  count_for_index = count_for_index + 1; 
+						  
+						  
+					  }
+					  console.log("innerHTML - ",innerHTML);
+					  document.getElementById("keyofmarker").innerHTML = "";
+					  if (ranOnceZone){
+					  setTimeout(function(){
+							polygon1 = new L.polygon([
+								[-25.754018,28.276449],
+								[-25.754187,28.275701],
+								[-25.754388,28.27469],
+								[-25.755202,28.274848],
+								[-25.755644,28.27491],
+								[-25.755482,28.276296],
+								[-25.754018,28.276449]
+						],{
+							    color: 'blue',
+							    weight: 3,
+							    opacity: 0.5,
+							    smoothFactor: 1
+							}).addTo(map);
+						}, 1500); 	
+					
+						
+						
+						setTimeout(function(){//csir
+							polygon2 = new L.polygon([
+								[-25.752552,28.277133],
+								[-25.753298,28.277055],
+								[-25.75402,28.277004],
+								[-25.754489,28.276964],
+								[-25.754849,28.27691],
+								[-25.755088,28.276897],
+								[-25.755697,28.276833],
+								[-25.756499,28.276573],
+								[-25.757753,28.275672],
+								[-25.758303,28.275608],
+								[-25.759052,28.277222],
+								[-25.759608,28.278404],
+								[-25.759581,28.279769],
+								[-25.759105,28.280772],
+								[-25.757492,28.2827],
+								[-25.755243,28.285277],
+								[-25.752742,28.282898],
+								[-25.751812,28.278573],
+								[-25.752552,28.277133]
 			
-			setTimeout(function(){//csir
-				polygon2 = new L.polygon([
-					[-25.752552,28.277133],
-					[-25.753298,28.277055],
-					[-25.75402,28.277004],
-					[-25.754489,28.276964],
-					[-25.754849,28.27691],
-					[-25.755088,28.276897],
-					[-25.755697,28.276833],
-					[-25.756499,28.276573],
-					[-25.757753,28.275672],
-					[-25.758303,28.275608],
-					[-25.759052,28.277222],
-					[-25.759608,28.278404],
-					[-25.759581,28.279769],
-					[-25.759105,28.280772],
-					[-25.757492,28.2827],
-					[-25.755243,28.285277],
-					[-25.752742,28.282898],
-					[-25.751812,28.278573],
-					[-25.752552,28.277133]
-			],{
-				    color: 'blue',
-				    weight: 3,
-				    opacity: 0.5,
-				    smoothFactor: 1
-				}).addTo(map);
-			}, 2000); 
-			
-			setTimeout(function(){
-				polygon3 = new L.polygon([
-					[ -25.765578,28.273908],
-					[-25.768399,28.273473 ],
-					[-25.778065,28.270363 ],
-					[-25.779152,28.270347 ],
-					[-25.780152,28.273366 ],
-					[-25.765954,28.277163 ],
-					[-25.765578,28.273908 ]
-			],{
-				    color: 'blue',
-				    weight: 3,
-				    opacity: 0.5,
-				    smoothFactor: 1
-				}).addTo(map);
-			}, 2500); 
-			
-			console.log("subscribtion done");
-	  }else{// for multiple bracelets
-		  var count_for_index = 0;
-	  	 
-		  for (var i = 0 ; i <10 ; i++){
-			  var id_string_checkbox = "checkbox"+(i+1);
-			  var id_string_bracelet = "bracelet"+(i+1);
-			  var checkbox_check = document.getElementById(id_string_checkbox);
-			  if (checkbox_check.checked){
+						],{
+							    color: 'blue',
+							    weight: 3,
+							    opacity: 0.5,
+							    smoothFactor: 1
+							}).addTo(map);
+						}, 2000); 
+						
+						setTimeout(function(){
+							polygon3 = new L.polygon([
+								[ -25.765578,28.273908],
+								[-25.768399,28.273473 ],
+								[-25.778065,28.270363 ],
+								[-25.779152,28.270347 ],
+								[-25.780152,28.273366 ],
+								[-25.765954,28.277163 ],
+								[-25.765578,28.273908 ]
+						],{
+							    color: 'blue',
+							    weight: 3,
+							    opacity: 0.5,
+							    smoothFactor: 1
+							}).addTo(map);
+						}, 2500); 
+						console.log("subscribtion done");
+				  }	  
+					  
+					  
 				  
-				  var topic = "kapua-sys/"+document.getElementById(id_string_bracelet).value+"/data" 
-				  topic_subscribe_index[count_for_index] = i;
-				  topic_subscribe_bracelet[count_for_index] = topic;
-				  topic_subscribe_bracelet_name[count_for_index] = document.getElementById(id_string_bracelet).value;
-				   
-				  var tempName = "name" + (i+1);
-				  console.log("tempName - ",tempName);
-				  var display_text_focus =  document.getElementById(tempName).value;
-				  
-				  
-				  client.subscribe(topic);  
-				  console.log("subscribtion to - ",topic);
-				  
-				  //adding list to the following list select input
-				  follow_list = document.getElementById('trackdevice');
-				  myOption = document.createElement("option");
-				  //myOption.text =document.getElementById(id_string_bracelet).value;
-				  myOption.text = display_text_focus;
-				  myOption.value = topic;
-				  follow_list.appendChild(myOption);
-				  innerHTML = innerHTML + '<img src="'+icon_list_url[i]+'"  width= "15px;" > - '+document.getElementById(id_string_bracelet).value+'&nbsp;&nbsp;|&nbsp;&nbsp;' ;
-				  
-				  
-			  }
-			  count_for_index = count_for_index + 1; 
-			  
-			  
-		  }
-		  console.log("innerHTML - ",innerHTML);
-		  document.getElementById("keyofmarker").innerHTML = "";
-	  
-		  setTimeout(function(){
-				polygon1 = new L.polygon([
-					[-25.754018,28.276449],
-					[-25.754187,28.275701],
-					[-25.754388,28.27469],
-					[-25.755202,28.274848],
-					[-25.755644,28.27491],
-					[-25.755482,28.276296],
-					[-25.754018,28.276449]
-			],{
-				    color: 'blue',
-				    weight: 3,
-				    opacity: 0.5,
-				    smoothFactor: 1
-				}).addTo(map);
-			}, 1500); 	
-		
-			
-			
-			setTimeout(function(){//csir
-				polygon2 = new L.polygon([
-					[-25.752552,28.277133],
-					[-25.753298,28.277055],
-					[-25.75402,28.277004],
-					[-25.754489,28.276964],
-					[-25.754849,28.27691],
-					[-25.755088,28.276897],
-					[-25.755697,28.276833],
-					[-25.756499,28.276573],
-					[-25.757753,28.275672],
-					[-25.758303,28.275608],
-					[-25.759052,28.277222],
-					[-25.759608,28.278404],
-					[-25.759581,28.279769],
-					[-25.759105,28.280772],
-					[-25.757492,28.2827],
-					[-25.755243,28.285277],
-					[-25.752742,28.282898],
-					[-25.751812,28.278573],
-					[-25.752552,28.277133]
-
-			],{
-				    color: 'blue',
-				    weight: 3,
-				    opacity: 0.5,
-				    smoothFactor: 1
-				}).addTo(map);
-			}, 2000); 
-			
-			setTimeout(function(){
-				polygon3 = new L.polygon([
-					[ -25.765578,28.273908],
-					[-25.768399,28.273473 ],
-					[-25.778065,28.270363 ],
-					[-25.779152,28.270347 ],
-					[-25.780152,28.273366 ],
-					[-25.765954,28.277163 ],
-					[-25.765578,28.273908 ]
-			],{
-				    color: 'blue',
-				    weight: 3,
-				    opacity: 0.5,
-				    smoothFactor: 1
-				}).addTo(map);
-			}, 2500); 
-			console.log("subscribtion done");
-			  
-		  
-		  
-	  
-		  
-	  }
+				
+				  ranOnceZone = false;
+	 }
 	  document.getElementById("start_button").classList.toggle("btn-primary");
 	  document.getElementById("start_button").classList.toggle("btn-success");
 	
